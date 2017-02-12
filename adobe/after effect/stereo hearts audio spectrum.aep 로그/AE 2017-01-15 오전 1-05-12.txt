@@ -1,0 +1,12 @@
+Adobe After Effects v14.0.1 Windows 64에서 "stereo hearts audio spectrum.aep" 프로젝트의 로그를 렌더링합니다.
+
+렌더링은 2017-01-15 오전 1:05:12에 시작되었습니다.
+
+  2017-01-15 오전 1:05:12: "Stereo Hearts (feat. Adam Levine) - Gym Class Heroes" 컴포지션을 시작하고 있습니다.
+
+  출력 위치: D:\휴대폰자료\S-s7 edge\Stereo Hearts (feat. Adam Levine) - Gym Class Heroes_1.mov    2017-01-15 오전 1:07:38: "Stereo Hearts (feat. Adam Levine) - Gym Class Heroes" 컴포지션을 완료했습니다.
+
+
+  총 경과 시간: 2분, 26초
+로그가 오전 1:07:38에 2017-01-15에서 종료되었습니다.
+
