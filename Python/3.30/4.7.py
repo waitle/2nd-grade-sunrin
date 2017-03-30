@@ -1,4 +1,4 @@
-def computegrade(score = float(input("enter score"))):
+def computegrade(score):
     if score >=0.9:
         print("A")
     elif score >=0.8:
@@ -9,5 +9,8 @@ def computegrade(score = float(input("enter score"))):
         print("D")
     else:
         print("bad score")
-
-computegrade()
+try:
+    score = float(input("enter score"))
+except:
+    print("bad score")
+computegrade(score)
