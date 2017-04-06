@@ -1,0 +1,5 @@
+get=int(input("input money"))
+pay=int(input("price"))
+print("change: ", get-pay)
+print("500: ", ((get-pay)//500))
+print("100: ", (((get-pay)%500)//100))
