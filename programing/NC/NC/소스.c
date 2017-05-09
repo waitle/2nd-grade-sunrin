@@ -1,55 +1,23 @@
-#include <stdio.h>
+#include<stdio.h>
 
-#include <stdlib.h>
-
-#include <time.h>
-
-void publishProgress(int a)
-{
-	a += 1;
+int num(int a, int b, int c) {
+	if (a == b) {
+		return 0;
+	}
+	else if (c < b) {
+		printf("*");
+		num(a, b, c + 1);
+	}
+	else if (c == b) {
+		printf("\n");
+		num(a, b + 1, c = -1);
+	}
 }
-
-void main(void)
-
-{
-
-	clock_t start, finish;
-
-	double duration;
-
-	start = clock();
-
-	for (int i = 0; i < 10000; i++) {
-		publishProgress(i);
-	}
-
-	finish = clock();
-
-	duration = (double)(finish - start) / CLOCKS_PER_SEC;
-
-	printf("%lf 초 걸렸습니다. \n", duration);
-
-
-	start = clock();
-
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			for (int k = 0; k < 10; k++) {
-				for (int l = 0; l < 10; l++) {
-					publishProgress(l);
-				}
-			}
-		}
-	}
-
-	finish = clock();
-
-	duration = (double)(finish - start) / CLOCKS_PER_SEC;
-
-	printf("%lf 초 걸렸습니다. \n", duration);
-
-
-
-	// 수행 시간 측정 종료
-
+int main() {
+	int a, b, c;
+	b = 0;
+	c = -1;
+	scanf("%d", &a);
+	num(a, b, c);
+	return 0;
 }
