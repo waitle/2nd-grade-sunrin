@@ -39,38 +39,53 @@ int rand(card input[52])
 	switch (temp[randf].shape)
 	{
 	case 1:
-		cout << "¢¼"<<temp[randf].number;
+		cout << "Â¢Â¼"<<temp[randf].number;
 			break;
 	case 2:
-		cout << "¢¾" << temp[randf].number;
+		cout << "Â¢Â¾" << temp[randf].number;
 			break;
 	case 3:
-		cout << "¢Â" << temp[randf].number;
+		cout << "Â¢Ã‚" << temp[randf].number;
 			break;
 	case 4:
-		cout << "¢À" << temp[randf].number;
+		cout << "Â¢Ã€" << temp[randf].number;
 			break;
 	}
 	cout << "     ";
 	switch (temp[randt].shape)
 	{
 	case 1:
-		cout << "¢¼" << temp[randt].number;
+		cout << "Â¢Â¼" << temp[randt].number;
 		break;
 	case 2:
-		cout << "¢¾" << temp[randt].number;
+		cout << "Â¢Â¾" << temp[randt].number;
 		break;
 	case 3:
-		cout << "¢Â" << temp[randt].number;
+		cout << "Â¢Ã‚" << temp[randt].number;
 		break;
 	case 4:
-		cout << "¢À" << temp[randt].number;
+		cout << "Â¢Ã€" << temp[randt].number;
 		break;
 	}
 	cout << "    my money: " << point << "	" << "batting: ";
 	cin >> bat;
 	if (temp[randt].number == temp[randf].number || temp[randt].number + 1 == temp[randf].number || temp[randt].number - 1 == temp[randf].number)
 	{
+		switch (temp[randp].shape)
+		{
+		case 1:
+			cout << "Â¢Â¼" << temp[randp].number;
+			break;
+		case 2:
+			cout << "Â¢Â¾" << temp[randp].number;
+			break;
+		case 3:
+			cout << "Â¢Ã‚" << temp[randp].number;
+			break;
+		case 4:
+			cout << "Â¢Ã€" << temp[randp].number;
+			break;
+		}
 		cout << "you lost" << bat << endl;
 		point -= bat;
 	}
@@ -79,16 +94,16 @@ int rand(card input[52])
 		switch (temp[randp].shape)
 		{
 		case 1:
-			cout << "¢¼" << temp[randp].number;
+			cout << "Â¢Â¼" << temp[randp].number;
 			break;
 		case 2:
-			cout << "¢¾" << temp[randp].number;
+			cout << "Â¢Â¾" << temp[randp].number;
 			break;
 		case 3:
-			cout << "¢Â" << temp[randp].number;
+			cout << "Â¢Ã‚" << temp[randp].number;
 			break;
 		case 4:
-			cout << "¢À" << temp[randp].number;
+			cout << "Â¢Ã€" << temp[randp].number;
 			break;
 		}
 		cout << "you win!" << endl;
@@ -96,6 +111,21 @@ int rand(card input[52])
 	}
 	else
 	{
+		switch (temp[randp].shape)
+		{
+		case 1:
+			cout << "Â¢Â¼" << temp[randp].number;
+			break;
+		case 2:
+			cout << "Â¢Â¾" << temp[randp].number;
+			break;
+		case 3:
+			cout << "Â¢Ã‚" << temp[randp].number;
+			break;
+		case 4:
+			cout << "Â¢Ã€" << temp[randp].number;
+			break;
+		}
 		cout << "you lost" << bat << endl;
 		point -= bat;
 	}
