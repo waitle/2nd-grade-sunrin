@@ -54,16 +54,18 @@ int printbar(int y, int limy, int len, int x)
 	}
 	return 0;
 }
-void printscore(int points1, int points2, int limy, int limx)
+void printscore(int points1, int points2, int points3, int limy, int limx)
 {
 	gotoxy(limx / 2 - 5, limy + 1);
 	cout << "SCORECARD\n";
 	cout << "Player 1 =" << points1 << '\n';
 	cout << "Player 2 =" << points2 << '\n';
+	cout << "Player 3 =" << points3 << '\n';
 }
 void main()
 {
 	system("cls");
+	int getPointPlayer = 0;
 	int limx, limy, points;
 	srand((unsigned int)time(NULL));
 	cout << "Enter horizontal limit:"; cin >> limx;
@@ -84,10 +86,10 @@ void main()
 	printbar(yl, limy, len, 2);
 	printbar(yr, limy, len, limx - 1);
 	printbar(yi, limy, len, limx / 2);
-	printscore(points1, points2, limy, limx);
+	printscore(points1, points2, points3, limy, limx);
 	cout << "Points required:" << points;
 	char in;
-	while (points1 != points && points2 != points)
+	while (points1 != points && points2 != points && points3 != points)
 	{
 		x = limx / 2 + (points1 - points2);//공의 초기 x 위치
 		y = limy / 2 + rand() % (limy / 10);//공의 초기 y 위치
@@ -165,59 +167,75 @@ void main()
 			if (x == 4)//1p쪽
 			{
 				chanx = 1;
-				if (y >= yl && y<(yl + len / 2))//위쪽 부근에 부딫힐 경우
+				if (y >= yl && y < (yl + len / 2)) {//위쪽 부근에 부딫힐 경우
+					getPointPlayer = 1;
 					chany = -1;
-				else if (y>(yl + len / 2) && y <= (yl + len))//아래쪽 부근에 부딫힐 경우
+				}
+				else if (y >(yl + len / 2) && y <= (yl + len)) {//아래쪽 부근에 부딫힐 경우
+					getPointPlayer = 1;
 					chany = 1;
-				else if (y == yl + len / 2)//가운데에 부딫힐 경우
+				}
+				else if (y == yl + len / 2) {//가운데에 부딫힐 경우
+					getPointPlayer = 1;
 					chany = 0;
+				}
 				else//맞추지 못했을 경우
 				{
-					points2++;
 					break;
 				}
 			}
 			else if (x == limx - 3)//2p쪽
 			{
 				chanx = -1;
-				if (y >= yr && y<(yr + len / 2))
+				if (y >= yr && y < (yr + len / 2)) {
+					getPointPlayer = 2;
 					chany = 1;
-				else if (y>(yr + len / 2) && y <= (yr + len))
+				}
+				else if (y >(yr + len / 2) && y <= (yr + len)) {
+					getPointPlayer = 2;
 					chany = -1;
-				else if (y == yr + len / 2)
+				}
+				else if (y == yr + len / 2) {
+					getPointPlayer = 2;
 					chany = 0;
+				}
 				else
 				{
-					points1++;
 					break;
 				}
 			}
 			else if (x == limx / 2)//3p쪽
 			{
 				if (chanx == 1) {
-					if (y >= yi && y < (yi + len / 2) && x == limx / 2) {
+					if (y >= yi && y < (yi + len / 2)) {
+						getPointPlayer = 3;
 						chany = 1;
 						chanx = -1;
 					}
-					else if (y >(yi + len / 2) && y <= (yi + len) && x == limx / 2) {
+					else if (y >(yi + len / 2) && y <= (yi + len)) {
+						getPointPlayer = 3;
 						chany = -1;
 						chanx = -1;
 					}
 					else if (y == yi + len / 2) {
+						getPointPlayer = 3;
 						chany = 0;
 						chanx = -1;
 					}
 				}
 				else if (chanx == -1) {
-					if (y >= yi && y < (yi + len / 2) && x == limx / 2) {
+					if (y >= yi && y < (yi + len / 2)) {
+						getPointPlayer = 3;
 						chany = 1;
 						chanx = 1;
 					}
-					else if (y >(yi + len / 2) && y <= (yi + len) && x == limx / 2) {
+					else if (y >(yi + len / 2) && y <= (yi + len)) {
+						getPointPlayer = 3;
 						chany = -1;
 						chanx = 1;
 					}
 					else if (y == yi + len / 2) {
+						getPointPlayer = 3;
 						chany = 0;
 						chanx = 1;
 					}
@@ -233,7 +251,17 @@ void main()
 			x = x + chanx;
 			y = y + chany;
 		}
-		printscore(points1, points2, limy, limx);
+		switch (getPointPlayer) {
+		case 1:points1++;
+			break;
+
+		case 2:points2++;
+			break;
+
+		case 3:points3++;
+			break;
+		}
+		printscore(points1, points2, points3, limy, limx);
 		Sleep(2000);
 		getch();
 		gotoxy(x, y);
@@ -241,9 +269,11 @@ void main()
 	}
 	gotoxy((limx / 2) - 5, (limy + 4) / 2);
 	if (points1 == points)
-		cout << "Player 1 wins by " << points1 - points2 << " point(s)";
+		cout << "Player 1 wins";
+	else if (points2 == points)
+		cout << "Player 2 wins";
 	else
-		cout << "Player 2 wins by " << points2 - points1 << " point(s)";
+		cout << "Player 3 wins";
 	Sleep(1000);
 	getch();
 }
