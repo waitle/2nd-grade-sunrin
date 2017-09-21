@@ -1,0 +1,67 @@
+1. python 경로 설정
+1_1. 프로젝트 폴더 생성
+d:\20400
+2. 가상 시스템 설치
+python -m venv test
+3. 가상 시스템 실행
+test\Scripts\activate
+4. django 설치
+pip install django
+5. 프로젝트 생성
+django-admin startproject firstproject  .
+6. 앱 생성
+manage.py startapp firstapp
+7. DB 반영 
+manage.py migrate
+8. 서버 구동
+manage.py runserver
+9. 관리자 계정 등록
+manage.py createsuperuser
+10. 관리자 페이지 접속
+https://localhost:8000/admin
+11_0
+firstproject\setting.py 설정 변경
+1) 앱 등록
+
+11. 정적 파일 경로 설정
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+12. models.py 클래스 생성
+
+13. (앱) DB 파일 생성
+manage.py makemigrations firstapp
+
+14. DB 반영
+python manage.py migrate firstapp
+
+15. 관리자 페이지 포스팅
+15_1 : 관리자 페이지 (클래스 인식)
+
+16. 장고 shell 명령
+manage.py shell
+16_1 객체 조회하기 
+from firstapp.models import Post
+Post.objects.all()
+16_2 객체 생성하기
+Post.objects.create(author=me, title='test2', text='test2')
+사용자 확인
+from django.contrib.auth.models import User
+User.objects.all()
+16_3 객체 조회하기(조건)
+특정사용자:Post.objects.filter(author=me)
+글자검색:Post.objects.filter(title__contains='te')
+
+시간검색
+16_3_1 from django.utils import timezone
+16_3_2 Post.objects.filter(created_date=timezone.now())
+16_3_2(1) Post.objects.filter(published_date=timezone.now())
+16_3_3 post=Post.objects.get(title='test2')
+16_3_4 post.publish()
+16_3_5 post=Post.objects.filter(published_date__lte=timezone.now())
+
+
+
+
+

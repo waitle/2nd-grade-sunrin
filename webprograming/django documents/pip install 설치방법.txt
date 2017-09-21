@@ -1,0 +1,6 @@
+C:\Users\Sunrin\AppData\Local\Programs\Python\Python35-32\Scripts;
+
+위 문장을 환경변수 path에 추가
+
+cmd창에서 아래와 같이 실행
+easy_install pip

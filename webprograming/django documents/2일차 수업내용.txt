@@ -1,0 +1,9 @@
+1. 찾기-환경 검색 해서 파이썬 패스를 설정
+2. 가상환경으로 이동해서 실행
+d:\20500django 이동
+3. 시스템 실행 test\Scripts\activate
+4. manage.py 파일이 있는 위치로 이동
+5. 서버 구동/관리자페이지 확인
+     manage.py runserver
+6. 관리자 페이지 접속
+     localhost:8000/root
