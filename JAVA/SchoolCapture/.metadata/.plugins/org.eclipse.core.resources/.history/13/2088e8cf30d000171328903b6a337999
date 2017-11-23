@@ -1,0 +1,96 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
+public class Esub extends JPanel {
+	private JTextField name;
+	private JTextField teacher;
+	private JTextField email;
+	private JTextField phone;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JButton button;
+	private JButton btnNewButton;
+	private JTable table;
+	private JScrollPane scrollPane_1;
+
+	
+	/**
+	 * Create the panel.
+	 */
+	public Esub() {
+		setLayout(null);
+		
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 2, 2);
+		add(scrollPane_1);
+		
+		name = new JTextField();
+		name.setBounds(309, 360, 116, 21);
+		add(name);
+		name.setColumns(10);
+		
+		teacher = new JTextField();
+		teacher.setBounds(309, 414, 116, 21);
+		add(teacher);
+		teacher.setColumns(10);
+		
+		email = new JTextField();
+		email.setBounds(309, 463, 116, 21);
+		add(email);
+		email.setColumns(10);
+		
+		phone = new JTextField();
+		phone.setBounds(309, 511, 116, 21);
+		add(phone);
+		phone.setColumns(10);
+		
+		lblNewLabel = new JLabel("\uACFC\uBAA9\uBA85");
+		lblNewLabel.setBounds(240, 363, 57, 15);
+		add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("\uC120\uC0DD\uB2D8 \uC131\uD568");
+		lblNewLabel_1.setBounds(240, 417, 69, 15);
+		add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("\uC774\uBA54\uC77C");
+		lblNewLabel_2.setBounds(240, 466, 57, 15);
+		add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("\uC5F0\uB77D\uCC98");
+		lblNewLabel_3.setBounds(240, 514, 57, 15);
+		add(lblNewLabel_3);
+		
+		button = new JButton("\uC0AD\uC81C");
+		button.setBounds(504, 535, 97, 23);
+		add(button);
+		
+		btnNewButton = new JButton("\uD655\uC778");
+		btnNewButton.setBounds(612, 535, 97, 23);
+		add(btnNewButton);
+		
+		int row = 0;
+		int column = 5; // 요일
+
+		String[][] subjects = new String[row][column]; // 과목배열
+
+		String[] date = { "월", "화", "수", "목", "금" };
+
+		table = new JTable(subjects, date);
+		table.setRowHeight(50); // 칸의 세로 크기
+
+		table.setBounds(41, 41, 400, 400); // 표 x,y,표크기 x,y
+		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
+		table.getTableHeader().setResizingAllowed(true); // 크기 수정 불가
+
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(58, 10, 625, 327);
+		add(scrollPane);
+
+	}
+}

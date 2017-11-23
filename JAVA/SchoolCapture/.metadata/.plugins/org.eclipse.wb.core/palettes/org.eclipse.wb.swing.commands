@@ -7,4 +7,12 @@
 	<moveEntry
 		id="org.eclipse.wb.swing.components.awt java.awt.Panel"
 		category="org.eclipse.wb.swing.components.awt"/>
+	<moveEntry
+		id="org.eclipse.wb.swing.containers javax.swing.JSplitPane"
+		category="org.eclipse.wb.swing.containers"
+		nextEntry="org.eclipse.wb.swing.containers javax.swing.JPanel"/>
+	<moveEntry
+		id="org.eclipse.wb.swing.containers javax.swing.JPanel"
+		category="org.eclipse.wb.swing.containers"
+		nextEntry="org.eclipse.wb.swing.containers javax.swing.JSplitPane"/>
 </commands>

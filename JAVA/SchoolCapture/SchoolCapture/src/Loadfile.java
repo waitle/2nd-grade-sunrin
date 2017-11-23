@@ -169,8 +169,4 @@ public class Loadfile extends JPanel implements DropTargetListener
     {
         System.out.println("dragActionChanged");
     }
-    public static void main(String args[])
-    {
-    	new Loadfile();
-    }
 }

@@ -1,0 +1,93 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JCheckBox;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextPane;
+import javax.swing.JLabel;
+
+import java.util.Date;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+
+public class Etime extends JPanel {
+	private JTable table;
+	private JTextField textField;
+
+	/**
+	 * Create the panel.
+	 */
+	public Etime() {
+		this.setSize(800, 600);
+		this.setVisible(true);
+		
+		int row = 7; 
+		int column = 5; // 요일
+		
+		String[][] subjects = new String[row][column]; // 과목배열
+		
+		String[] date = {"월", "화", "수","목","금"};
+		setLayout(null);
+		
+		table = new JTable(subjects, date);
+		table.setRowHeight(40); // 칸의 세로 크기
+		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
+		table.getTableHeader().setResizingAllowed(false); // 크기 수정 불가
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(150, 0, 500, 40*row+25);
+		this.add(scrollPane);
+		
+		JRadioButton button1 = new JRadioButton("static");
+		button1.setBounds(150, 320, 130, 30);
+		this.add(button1);
+		
+		JRadioButton button2 = new JRadioButton("instant");
+		button2.setBounds(450, 320, 130, 30);
+		this.add(button2);
+		
+		Date today = new Date();
+		int month = today.getMonth() + 1;
+		JLabel lblAsdf = new JLabel("오늘 날짜 : " + month + "월 " + today.getDate() + "일");
+		lblAsdf.setBounds(150, 370, 180, 20);
+		this.add(lblAsdf);
+		
+		JLabel time = new JLabel("수업시간 : ");
+		time.setBounds(150, 400, 80, 30);
+		this.add(time);
+		
+		JRadioButton rb1 = new JRadioButton("40");
+		rb1.setBounds(230, 400, 45, 30);
+		this.add(rb1);
+		
+		JRadioButton rb2 = new JRadioButton("45");
+		rb2.setBounds(280, 400, 45, 30);
+		this.add(rb2);
+		
+		JRadioButton rb3 = new JRadioButton("50");
+		rb3.setBounds(330, 400, 45, 30);
+		this.add(rb3);
+		
+		ButtonGroup choose = new ButtonGroup();
+		choose.add(button1);
+		choose.add(button2);
+
+		ButtonGroup group = new ButtonGroup();
+		group.add(rb1);
+		group.add(rb2);
+		group.add(rb3);
+		
+		textField = new JTextField();
+		textField.setText("수업일수");
+		textField.setBounds(150, 440, 120, 30);
+		this.add(textField);
+		textField.setColumns(10);
+		
+		JButton button = new JButton("확인");
+		button.setBounds(530, 480, 100, 30);
+		this.add(button);
+
+	}
+}

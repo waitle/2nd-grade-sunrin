@@ -1,0 +1,62 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class TTdata extends JPanel {
+	private JTable table;
+	private int runtime = 50;
+	private int lessoncount = 7;
+	final int breaktime = 10;
+	final int lunchtime = 50;
+
+	public int getRuntime() {
+		return runtime;
+	}
+
+	public void setRuntime(int runtime) {
+		this.runtime = runtime;
+	}
+
+	public int getLessoncount() {
+		return lessoncount;
+	}
+
+	public void setLessoncount(int lessoncount) {
+		this.lessoncount = lessoncount;
+	}
+
+	public TTdata() {
+
+		this.setSize(800, 600);
+		this.setVisible(true);
+
+		int row = lessoncount;
+		int column = 5; // 요일
+
+		String[][] subjects = new String[row][column]; // 과목배열
+
+		String[] date = { "월", "화", "수", "목", "금" };
+		setLayout(null);
+		DefaultTableModel mod = new DefaultTableModel(subjects, date) { // 셀 수정
+																		// 못하게
+																		// 하는 부분
+			public boolean isCellEditable(int i, int c) {
+				return false;
+			}
+		};
+		table = new JTable(mod);
+		table.setRowHeight(60); // 칸의 세로 크기
+		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
+		table.getTableHeader().setResizingAllowed(false); // 크기 수정 불가
+
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(150, 0, 500, 60 * row + 25);
+		this.add(scrollPane);
+	}
+	public void setEdit()
+	{
+		
+	}
+
+}

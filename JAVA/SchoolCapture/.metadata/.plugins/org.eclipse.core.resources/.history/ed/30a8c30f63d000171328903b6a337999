@@ -1,0 +1,141 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.security.auth.Subject;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenuItem;
+
+public class temp extends JFrame {
+
+//	public Subjects subject = null;
+	public TTdata timetable = null;
+//	public SSet sSet = null;
+	public Etime tSet = null;
+	public JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					temp frame = new temp();
+					frame.setTitle("temp");
+					frame.timetable = new TTdata();
+					frame.tSet = new Etime();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public temp() {
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		JMenuItem [] mainItems = new JMenuItem[2];
+		String [] mainTitles = {"Subjects", "Timetable"};
+		JMenuItem [] settingsItems = new JMenuItem[2];
+		String [] settingsTitles = {"Subjects Setting", "Timetable Setting"};
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu main = new JMenu("Main");
+		menuBar.add(main);
+		
+		MenuActionListener listener = new MenuActionListener();
+		for(int i=0; i<mainItems.length; i++){
+			mainItems[i] = new JMenuItem(mainTitles[i]);
+			mainItems[i].addActionListener(listener);
+			main.add(mainItems[i]);
+		}
+		
+		JMenu settings = new JMenu("Settings");
+		menuBar.add(settings);
+		
+		for(int i=0; i<settingsItems.length; i++){
+			settingsItems[i] = new JMenuItem(settingsTitles[i]);
+			settingsItems[i].addActionListener(listener);
+			settings.add(settingsItems[i]);
+		}
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+	}
+
+
+	public class MenuActionListener extends JFrame implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String tmp = e.getActionCommand();
+			
+			switch(tmp){
+			case "Subjects" : 
+				break;
+			case "Timetable" : 
+				change("Timetable");
+				break;
+			case "Subjects Setting":
+				break;
+			case "Timetable Setting":
+				change("TSet");
+				break;
+			}
+				
+
+		}
+		
+	}
+	public void change(String panelName) {
+/*		if(panelName.equals("Subjects")){
+			getContentPane().removeAll();
+			getContentPane().add(subjects);
+			revalidate();
+			repaint();
+		}*/
+		if(panelName.equals("Timetable")){
+			contentPane.removeAll();
+			contentPane.add(timetable);
+			revalidate();
+			repaint();
+		}
+/*		else if(panelName.equals("Subjects Setting")){
+			getContentPane().removeAll();
+			getContentPane().add(sSet);
+			revalidate();
+			repaint();
+		}*/
+		else if(panelName.equals("TSet")){
+			contentPane.removeAll();
+			contentPane.add(tSet);
+			revalidate();
+			repaint();
+		}
+		else{
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+		}
+	}
+}

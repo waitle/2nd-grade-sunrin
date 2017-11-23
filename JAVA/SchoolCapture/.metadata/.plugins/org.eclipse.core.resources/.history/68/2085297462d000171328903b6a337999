@@ -1,0 +1,194 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.Toolkit;
+
+import java.awt.BorderLayout;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import java.awt.GridLayout;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.CardLayout;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+
+public class mainpage extends JFrame{
+
+	
+	private JPanel contentPane;
+	public Subjects subject = null;//과목을 보여주는 패널
+	public View timetable = null;//시간표를 보여주는 패널
+	public Esub sSet = null;//과목을 설정하는 패널
+	public Etime tSet = null;//시간표를 설정하는 패널
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					mainpage frame = new mainpage();
+					Loadfile lf = new Loadfile();
+					frame.getContentPane().add(lf);//드래그앤 드롭 활성화
+					
+					frame.timetable = new View();
+					frame.tSet = new Etime();
+					frame.subject = new Subjects();
+					frame.sSet = new Esub();
+					
+					frame.getContentPane();
+					frame.setVisible(true);
+					
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public mainpage() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("./"));
+		setTitle("School Capture(Beta)");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenuItem [] mainItems = new JMenuItem[2];
+		String [] mainTitles = {"Subjects", "Timetable"};
+		JMenuItem [] settingsItems = new JMenuItem[2];
+		String [] settingsTitles = {"Subjects Setting", "Timetable Setting"};
+		
+		JMenu main = new JMenu("Main");
+		menuBar.add(main);
+		
+		MenuActionListener listener = new MenuActionListener();
+		for(int i=0; i<mainItems.length; i++){
+			mainItems[i] = new JMenuItem(mainTitles[i]);
+			mainItems[i].addActionListener(listener);
+			main.add(mainItems[i]);
+		}
+		/*
+		JMenuItem mntmSubjects = new JMenuItem("Subjects");
+		mnMain.add(mntmSubjects);
+		
+		JMenuItem mntmTimetable = new JMenuItem("Timetable");
+		mnMain.add(mntmTimetable);
+		*/
+		JMenu settings = new JMenu("Settings");
+		menuBar.add(settings);
+		
+		for(int i=0; i<settingsItems.length; i++){
+			settingsItems[i] = new JMenuItem(settingsTitles[i]);
+			settingsItems[i].addActionListener(listener);
+			settings.add(settingsItems[i]);
+		}
+		
+		/*
+		JMenuItem mntmTimetableSettings = new JMenuItem("Timetable settings");
+		mnSettings.add(mntmTimetableSettings);
+		
+		JMenuItem mntmManageSubjects = new JMenuItem("Subject settings");
+		mnSettings.add(mntmManageSubjects);
+		
+		JMenuItem mntmSetTimetable = new JMenuItem("Info");
+		mnSettings.add(mntmSetTimetable);
+		*/
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+	}
+	public class MenuActionListener extends JFrame implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String tmp = e.getActionCommand();
+			
+			switch(tmp){
+			case "Subjects" : //Main-subjects
+				change("Subjects");
+				break;
+			case "Timetable" : //Main-Timetable
+				change("Timetable");
+				break;
+			case "Subjects Setting"://settings-Subject settings
+				change("SSet");
+				break;
+			case "Timetable Setting"://Settings-Timetable settings
+				change("TSet");
+				break;
+			}
+				
+
+		}
+		
+	}
+	public void change(String panelName) {
+		if(panelName.equals("Subjects")){
+			getContentPane().removeAll();
+			getContentPane().add(subject);
+			revalidate();
+			repaint();
+		}
+		if(panelName.equals("Timetable")){
+			contentPane.removeAll();
+			contentPane.add(timetable);
+			revalidate();
+			repaint();
+		}
+		else if(panelName.equals("SSet")){
+			getContentPane().removeAll();
+			getContentPane().add(sSet);
+			revalidate();
+			repaint();
+		}
+		else if(panelName.equals("TSet")){
+			contentPane.removeAll();
+			contentPane.add(tSet);
+			revalidate();
+			repaint();
+		}
+		else{
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+		}
+	}
+	
+	
+}

@@ -1,8 +1,7 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
@@ -32,16 +31,18 @@ public class View extends JPanel {
 	 */
 	public View() {
 		this.setSize(800, 600);
-        this.setVisible(true);
+		this.setVisible(true);
 
-		int row = 7;
-		int column = 5; // 요일
+		TTdata forview = new TTdata();
 
-		String[][] subjects = new String[row][column]; // 과목배열
+		DefaultTableModel mod = new DefaultTableModel(forview.subjects, forview.date) {
+			// 셀 수정 못하게 하는 부분
+			public boolean isCellEditable(int i, int c) {
+				return false;
+			}
+		};
 
-		String[] date = { "월", "화", "수", "목", "금" };
-
-		table = new JTable(subjects, date);
+		table = new JTable(mod);
 		table.setRowHeight(50); // 칸의 세로 크기
 
 		table.setBounds(41, 41, 400, 400); // 표 x,y,표크기 x,y

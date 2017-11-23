@@ -1,0 +1,104 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Component;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+
+public class Esub extends JPanel {
+	private JTextField name;
+	private JTextField teacher;
+	private JTextField email;
+	private JTextField phone;
+	ArrayList<Subjectdata> Sdata = new ArrayList<>();
+	
+	/**
+	 * Create the panel.
+	 */
+	public Esub() {
+		
+		this.setSize(800, 540);
+		setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(0, 0, 788, 540);
+		add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
+		
+		name = new JTextField();
+		name.setColumns(10);
+		name.setBounds(312, 347, 116, 21);
+		panel.add(name);
+		
+		teacher = new JTextField();
+		teacher.setColumns(10);
+		teacher.setBounds(312, 401, 116, 21);
+		panel.add(teacher);
+		
+		email = new JTextField();
+		email.setColumns(10);
+		email.setBounds(312, 450, 116, 21);
+		panel.add(email);
+		
+		phone = new JTextField();
+		phone.setColumns(10);
+		phone.setBounds(312, 498, 116, 21);
+		panel.add(phone);
+		
+		JLabel Lname = new JLabel("\uACFC\uBAA9\uBA85");
+		Lname.setBounds(243, 350, 57, 15);
+		panel.add(Lname);
+		
+		JLabel Lteacher = new JLabel("\uC120\uC0DD\uB2D8 \uC131\uD568");
+		Lteacher.setBounds(243, 404, 69, 15);
+		panel.add(Lteacher);
+		
+		JLabel Lemail = new JLabel("\uC774\uBA54\uC77C");
+		Lemail.setBounds(243, 453, 57, 15);
+		panel.add(Lemail);
+		
+		JLabel Lphone = new JLabel("\uC5F0\uB77D\uCC98");
+		Lphone.setBounds(243, 501, 57, 15);
+		panel.add(Lphone);
+		
+		JButton delete = new JButton("\uC0AD\uC81C");
+		delete.setBounds(507, 522, 97, 23);
+		panel.add(delete);
+		
+		JButton confirm = new JButton("\uD655\uC778");
+		confirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//새로 입력된 값들을 과목데이터에 저장
+				Subjectdata temp = new Subjectdata();
+				temp.name = name.getText();
+				temp.Email = email.getText();
+				temp.phone = phone.getText();
+				temp.teacher = teacher.getText();
+				Sdata.add(temp);
+				
+				//현재 입력되어있는 값들을 초기화
+				name.setText(null);
+				teacher.setText(null);
+				email.setText(null);
+				phone.setText(null);
+				
+			}
+		});
+		confirm.setBounds(615, 522, 97, 23);
+		panel.add(confirm);
+        this.setVisible(true);
+        
+
+	}
+}

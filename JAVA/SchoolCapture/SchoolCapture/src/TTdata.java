@@ -1,4 +1,13 @@
-
-public class TTdata {
-
+public class TTdata{
+	static int runtime = 50;
+	static int lessoncount = 7;
+	final static int breaktime = 10;
+	final static int lunchtime = 50;
+	static String[] date = { "월", "화", "수", "목", "금" };
+	static String[][] subjects = new String[lessoncount][5];
+	public String getlessoncount()
+	{
+		return String.valueOf(lessoncount);
+		
+	}
 }

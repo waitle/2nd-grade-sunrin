@@ -1,0 +1,41 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+
+public class Esub extends JPanel {
+	private JTextField textField;
+
+	
+	/**
+	 * Create the panel.
+	 */
+	public Esub() {
+		setLayout(null);
+		
+		int row = 0;
+		int column = 5; // 요일
+
+		String[][] subjects = new String[row][column]; // 과목배열
+
+		String[] date = { "과목", "선생님", "이메일", "전화번호", "촬영된 사진수" };
+		
+		this.setSize(800, 540);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(0, 0, 800, 540);
+		add(scrollPane);
+		
+		textField = new JTextField();
+		textField.setText("\u3139\u3139\u3147\u3147\u3141\u3141\u3134\u3134");
+		scrollPane.setViewportView(textField);
+		textField.setColumns(10);
+        this.setVisible(true);
+
+	}
+}

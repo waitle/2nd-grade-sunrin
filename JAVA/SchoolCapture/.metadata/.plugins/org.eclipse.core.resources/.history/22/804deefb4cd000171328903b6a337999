@@ -1,0 +1,20 @@
+
+public class TTdata {
+	private int runtime = 0;
+	private int lessoncount =0;
+	final int breaktime = 10;
+	final int lunchtime = 50;
+	
+	public int getRuntime() {
+		return runtime;
+	}
+	public void setRuntime(int runtime) {
+		this.runtime = runtime;
+	}
+	public int getLessoncount() {
+		return lessoncount;
+	}
+	public void setLessoncount(int lessoncount) {
+		this.lessoncount = lessoncount;
+	}
+}

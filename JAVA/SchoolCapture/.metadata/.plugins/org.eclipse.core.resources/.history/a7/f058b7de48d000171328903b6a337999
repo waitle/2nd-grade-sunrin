@@ -1,0 +1,55 @@
+public class MenuActionListener extends JFrame implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String tmp = e.getActionCommand();
+			
+			switch(tmp){
+			case "Subjects" : 
+				break;
+			case "Timetable" : 
+				change("Timetable");
+				break;
+			case "Subjects Setting":
+				break;
+			case "Timetable Setting":
+				change("TSet");
+				break;
+			}
+				
+
+		}
+		
+	}
+	public void change(String panelName) {
+/*		if(panelName.equals("Subjects")){
+			getContentPane().removeAll();
+			getContentPane().add(subjects);
+			revalidate();
+			repaint();
+		}*/
+		if(panelName.equals("Timetable")){
+			contentPane.removeAll();
+			contentPane.add(timetable);
+			revalidate();
+			repaint();
+		}
+/*		else if(panelName.equals("Subjects Setting")){
+			getContentPane().removeAll();
+			getContentPane().add(sSet);
+			revalidate();
+			repaint();
+		}*/
+		else if(panelName.equals("TSet")){
+			contentPane.removeAll();
+			contentPane.add(tSet);
+			revalidate();
+			repaint();
+		}
+		else{
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+		}
+	}

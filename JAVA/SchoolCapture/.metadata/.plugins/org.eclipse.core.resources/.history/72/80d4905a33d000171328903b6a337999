@@ -1,0 +1,46 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Component;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Esub extends JPanel {
+
+	
+	/**
+	 * Create the panel.
+	 */
+	public Esub() {
+		setLayout(null);
+		
+		int row = 0;
+		int column = 5; // 요일
+
+		String[][] subjects = new String[row][column]; // 과목배열
+
+		String[] date = { "과목", "선생님", "이메일", "전화번호", "촬영된 사진수" };
+		
+		this.setSize(800, 540);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 788, 540);
+		add(scrollPane);
+		
+		JButton btnNewButton = new JButton("wtf");
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("botton clicked");
+			}
+		});
+		scrollPane.setViewportView(btnNewButton);
+        this.setVisible(true);
+
+	}
+}
