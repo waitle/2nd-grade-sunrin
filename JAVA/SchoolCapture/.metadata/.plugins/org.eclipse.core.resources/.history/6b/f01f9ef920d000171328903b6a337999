@@ -1,0 +1,13 @@
+public class background{
+	public static void main(String[] args){
+		Runnable r = new foo();
+		Thread t = new Thread(r);
+		t.start();
+	}
+}
+class foo implements Runnable{
+	@Override
+	public void run() {
+		
+	}
+}

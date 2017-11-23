@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="java.awt.dnd.DropTargetListener"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="net.miginfocom.swing.MigLayout"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="Loadfile"/>
+<fullyQualifiedTypeName name="com.drew.metadata.Metadata"/>
+<fullyQualifiedTypeName name="com.drew.imaging.ImageMetadataReader"/>
+<fullyQualifiedTypeName name="com.drew.metadata.Directory"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+</qualifiedTypeNameHistroy>

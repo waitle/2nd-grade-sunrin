@@ -1,0 +1,105 @@
+import java.awt.BorderLayout;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
+
+public class Loadfile extends JPanel implements DropTargetListener, Runnable
+{
+    JTextArea ta;
+    DropTarget dt;
+    public void attatch()
+    {
+    	
+    }
+    public Loadfile()
+    {
+        ta = new JTextArea(10, 20);
+        dt = new DropTarget(ta, DnDConstants.ACTION_COPY_OR_MOVE, this, true, null);
+    }
+    @Override
+    public void dragEnter(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragEnter");
+    }
+    @Override
+    public void dragExit(DropTargetEvent dte)
+    {
+        System.out.println("dragExit");
+    }
+    @Override
+    public void dragOver(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragOver");
+    }
+    @Override
+    public void drop(DropTargetDropEvent dtde)
+    {
+        System.out.println("dragDrop");
+        if ((dtde.getDropAction() & DnDConstants.ACTION_COPY_OR_MOVE) != 0)
+        {
+            dtde.acceptDrop(dtde.getDropAction());
+            Transferable tr = dtde.getTransferable();
+            try {
+				Metadata metadata = ImageMetadataReader.readMetadata((InputStream) tr);
+				for (Directory directory : metadata.getDirectories()) {
+				    for (Tag tag : directory.getTags()) {
+				        System.out.println(tag);
+				    }
+				}
+			} catch (ImageProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+            try
+            {
+                //파일명 얻어오기
+                java.util.List list = (java.util.List) tr.getTransferData(DataFlavor.javaFileListFlavor);
+             
+                //파일명 출력
+                for(int i=0;i < list.size();i++)
+                {
+                    System.out.println(list.size() + "-" + list.get(i));
+                }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Override
+    public void dropActionChanged(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragActionChanged");
+    }
+    public static void main(String args[])
+    {
+    	
+    }
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

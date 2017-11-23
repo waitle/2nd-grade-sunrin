@@ -1,0 +1,65 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class mainpage extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					mainpage frame = new mainpage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public mainpage() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnMain = new JMenu("Main");
+		menuBar.add(mnMain);
+		
+		JMenuItem mntmSubjects = new JMenuItem("Subjects");
+		mnMain.add(mntmSubjects);
+		
+		JMenuItem mntmTimetable = new JMenuItem("Timetable");
+		mnMain.add(mntmTimetable);
+		
+		JMenu mnSettings = new JMenu("Settings");
+		menuBar.add(mnSettings);
+		
+		JMenuItem mntmSetTimetable = new JMenuItem("Set TImetable");
+		mnSettings.add(mntmSetTimetable);
+		
+		JMenuItem mntmAddSubject = new JMenuItem("Add subject");
+		mnSettings.add(mntmAddSubject);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+	}
+
+}

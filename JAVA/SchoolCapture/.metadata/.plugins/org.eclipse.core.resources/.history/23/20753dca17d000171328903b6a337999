@@ -1,0 +1,141 @@
+import java.awt.BorderLayout;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.StringTokenizer;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import org.apache.commons.imaging.common.BinaryOutputStream;
+
+import com.drew.imaging.ImageMetadataReader;
+import com.drew.imaging.ImageProcessingException;
+import com.drew.metadata.Directory;
+import com.drew.metadata.Metadata;
+import com.drew.metadata.Tag;
+import com.drew.tools.FileUtil;
+
+public class Loadfile extends JPanel implements DropTargetListener, Runnable
+{
+    JTextArea ta;
+    DropTarget dt;
+    String filelocaion;
+    File file;
+    String filetype = new String();
+    String filename = new String();
+    StringTokenizer st;
+    StringTokenizer st2;
+    int tempcopy;
+    public Loadfile()
+    {
+        ta = new JTextArea(800, 600);
+        dt = new DropTarget(ta, DnDConstants.ACTION_COPY_OR_MOVE, this, true, null);
+        this.add(ta, BorderLayout.CENTER);
+        this.setSize(800, 600);
+        this.setOpaque(false);
+        this.setVisible(true);
+    }
+    @Override
+    public void dragEnter(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragEnter");
+    }
+    @Override
+    public void dragExit(DropTargetEvent dte)
+    {
+        System.out.println("dragExit");
+    }
+    @Override
+    public void dragOver(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragOver");
+    }
+    @Override
+    public void drop(DropTargetDropEvent dtde)
+    {
+    	InputStream is = null;
+    	OutputStream os = null;
+        System.out.println("dragDrop");
+        if ((dtde.getDropAction() & DnDConstants.ACTION_COPY_OR_MOVE) != 0)
+        {
+            dtde.acceptDrop(dtde.getDropAction());
+            Transferable tr = dtde.getTransferable();
+            
+            try
+            {
+                //파일명 얻어오기
+                java.util.List list = (java.util.List) tr.getTransferData(DataFlavor.javaFileListFlavor);
+             
+                //파일명 출력
+                for(int i=0;i < list.size();i++)//드롭된 아이템 갯수만큼 반복
+                {
+                	filelocaion = list.get(i).toString();//경로불러오기
+                	System.out.println("file location:" + filelocaion);
+                	file = new File(filelocaion);//파일불러오기
+                    //System.out.println(list.size() + "-" + list.get(i));
+                    st = new StringTokenizer(filelocaion, ".");//확장자만 분리
+                	while(st.hasMoreTokens())//마지막 토큰을 반환(확장자)
+                	{
+                		filetype = st.nextToken();
+                	}
+                	System.out.println("file type:" + filetype);
+                	
+                	
+                	
+                    if(filetype.equals("jpg")||filetype.equals("jpeg")||filetype.equals("png")||filetype.equals("gif"))//파일 확장자가 이미지일때
+                    {                    
+                    	System.out.println("image confirmed");
+                    	
+                    	st2 = new StringTokenizer(filelocaion, "\\");//확장자만 분리
+                     	while(st2.hasMoreTokens())//마지막 토큰을 반환
+                     	{
+                     		filename = st2.nextToken();
+                     	}
+                    	System.out.println("file name :" + filename);
+                    	is = new FileInputStream(filelocaion);
+                    	os = new FileOutputStream("\\UploadedFiles\\"+filename);
+                    	while(true)//파일복사
+                    	{
+                    		tempcopy = is.read();
+                    		if(tempcopy == -1) break;
+                    		os.write(tempcopy);
+                    		
+                    	}
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Override
+    public void dropActionChanged(DropTargetDragEvent dtde)
+    {
+        System.out.println("dragActionChanged");
+    }
+    public static void main(String args[])
+    {
+    	
+    }
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+}

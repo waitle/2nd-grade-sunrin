@@ -1,0 +1,116 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.Toolkit;
+
+import java.awt.BorderLayout;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import java.awt.GridLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.CardLayout;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+
+public class mainpage extends JFrame{
+
+	
+	private JPanel contentPane;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					mainpage frame = new mainpage();
+					Loadfile lf = new Loadfile();
+					//Runnable pic = new Loadfile();
+					//Thread DnD = new Thread(pic);
+					frame.getContentPane().add(lf);
+					frame.getContentPane();
+					frame.setVisible(true);
+					//DnD.start();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+	}
+
+	
+	/**
+	 * Create the frame.
+	 */
+	public mainpage() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("./"));
+		setTitle("School Capture(Beta)");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 600);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnMain = new JMenu("Main");
+		menuBar.add(mnMain);
+		
+		JMenuItem mntmSubjects = new JMenuItem("Subjects");
+		mnMain.add(mntmSubjects);
+		
+		JMenuItem mntmTimetable = new JMenuItem("Timetable");
+		mnMain.add(mntmTimetable);
+		
+		JMenu mnSettings = new JMenu("Settings");
+		menuBar.add(mnSettings);
+		
+		JMenuItem mntmTimetableSettings = new JMenuItem("TImetable settings");
+		mnSettings.add(mntmTimetableSettings);
+		
+		JMenuItem mntmManageSubjects = new JMenuItem("Subject settings");
+		mnSettings.add(mntmManageSubjects);
+		
+		JMenuItem mntmSetTimetable = new JMenuItem("Info");
+		mnSettings.add(mntmSetTimetable);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		View Timetable = new View();
+		contentPane.add(Timetable);
+		
+		textField = new JTextField();
+		textField.setText("\uACFC\uBAA9\uBA85");
+		textField.setBounds(375, 187, 116, 21);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("\uACFC\uBAA9\uBA85");
+		lblNewLabel.setBounds(306, 190, 57, 15);
+		contentPane.add(lblNewLabel);
+	}
+}
