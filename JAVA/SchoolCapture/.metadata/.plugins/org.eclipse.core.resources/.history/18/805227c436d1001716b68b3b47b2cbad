@@ -1,0 +1,94 @@
+import javax.swing.JPanel;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Subjects extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Create the panel.
+	 */
+	public Subjects() {
+		setBackground(Color.DARK_GRAY);
+		setVisible(true);
+		setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 777, 572);
+		add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
+		
+		JButton korean = new JButton("\uBB38\uD559");
+		korean.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		korean.setBounds(46, 31, 160, 120);
+		panel.add(korean);
+		
+		JButton design = new JButton("\uB514\uC77C");
+		design.setBounds(218, 31, 160, 120);
+		panel.add(design);
+		
+		JButton game = new JButton("\uAC9C\uD504");
+		game.setBounds(390, 31, 160, 120);
+		panel.add(game);
+		
+		JButton math = new JButton("\uBBF8\uC801");
+		math.setBounds(562, 31, 160, 120);
+		panel.add(math);
+		
+		JButton money = new JButton("\uC0C1\uACBD");
+		money.setBounds(46, 161, 160, 120);
+		panel.add(money);
+		
+		JButton english = new JButton("\uC601\uC5B4");
+		english.setBounds(218, 161, 160, 120);
+		panel.add(english);
+		
+		JButton web1 = new JButton("\uC6F9\uD5041");
+		web1.setBounds(390, 161, 160, 120);
+		panel.add(web1);
+		
+		JButton web2 = new JButton("\uC6F9\uD5042");
+		web2.setBounds(562, 161, 160, 120);
+		panel.add(web2);
+		
+		JButton music = new JButton("\uC74C\uC545");
+		music.setBounds(46, 291, 160, 120);
+		panel.add(music);
+		
+		JButton japan = new JButton("\uC77C\uBCF8\uC5B4");
+		japan.setBounds(218, 291, 160, 120);
+		panel.add(japan);
+		
+		JButton java = new JButton("\uC790\uBC14");
+		java.setBounds(390, 291, 160, 120);
+		panel.add(java);
+		
+		JButton loot = new JButton("\uC9C4\uB85C");
+		loot.setBounds(562, 291, 160, 120);
+		panel.add(loot);
+		
+		JButton chemi = new JButton("\uC9C4\uB85C");
+		chemi.setBounds(46, 421, 160, 120);
+		panel.add(chemi);
+		setVisible(true);
+
+	}
+}

@@ -1,0 +1,14 @@
+public class TTdata{
+	static int runtime = 50;
+	static int lessoncount = 7;
+	final static int breaktime = 10;
+	final static int lunchtime = 50;
+	static String[] date = { "월", "화", "수", "목", "금" };
+	static String[][] subjects = new String[][]{{"상경", "미적", "문학","일본어","겜프","겜프","화학"},{"일본어","상경","자바","자바","음악","영어","체육"},{"미적","겜프","겜프","웹프2","화학","문학",""},
+		{"자바","자바","웹프1","웹프1","영어","일본어","미적"},{"체육","디일","영어","진로","미적","",""}};
+	public static String getlessoncount()
+	{
+		return String.valueOf(lessoncount);
+		
+	}
+}

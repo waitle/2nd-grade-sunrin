@@ -1,46 +1,113 @@
 import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Subjects extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JTextField subjectname;
-	private JTextField teacher;
 
-	/**
-	 * Create the panel.
-	 */
+	private static final long serialVersionUID = 1L;
+
 	public Subjects() {
-		setBackground(Color.PINK);
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setBackground(Color.DARK_GRAY);
+		this.setSize(800, 550);
+		this.setVisible(true);
+		setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 800, 550);
+		add(scrollPane);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);
+		
+		JButton korean = new JButton("\uBB38\uD559");
+		korean.setForeground(Color.DARK_GRAY);
+		korean.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		korean.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		korean.setBounds(46, 31, 160, 120);
+		panel.add(korean);
+		
+		JButton design = new JButton("\uB514\uC77C");
+		design.setForeground(Color.DARK_GRAY);
+		design.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		design.setBounds(218, 31, 160, 120);
+		panel.add(design);
+		
+		JButton game = new JButton("\uAC9C\uD504");
+		game.setForeground(Color.DARK_GRAY);
+		game.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		game.setBounds(390, 31, 160, 120);
+		panel.add(game);
+		
+		JButton math = new JButton("\uBBF8\uC801");
+		math.setForeground(Color.DARK_GRAY);
+		math.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		math.setBounds(562, 31, 160, 120);
+		panel.add(math);
+		
+		JButton money = new JButton("\uC0C1\uACBD");
+		money.setForeground(Color.DARK_GRAY);
+		money.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		money.setBounds(46, 161, 160, 120);
+		panel.add(money);
+		
+		JButton english = new JButton("\uC601\uC5B4");
+		english.setForeground(Color.DARK_GRAY);
+		english.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		english.setBounds(218, 161, 160, 120);
+		panel.add(english);
+		
+		JButton web1 = new JButton("\uC6F9\uD5041");
+		web1.setForeground(Color.DARK_GRAY);
+		web1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		web1.setBounds(390, 161, 160, 120);
+		panel.add(web1);
+		
+		JButton web2 = new JButton("\uC6F9\uD5042");
+		web2.setForeground(Color.DARK_GRAY);
+		web2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		web2.setBounds(562, 161, 160, 120);
+		panel.add(web2);
+		
+		JButton music = new JButton("\uC74C\uC545");
+		music.setForeground(Color.DARK_GRAY);
+		music.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		music.setBounds(46, 291, 160, 120);
+		panel.add(music);
+		
+		JButton japan = new JButton("\uC77C\uBCF8\uC5B4");
+		japan.setForeground(Color.DARK_GRAY);
+		japan.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		japan.setBounds(218, 291, 160, 120);
+		panel.add(japan);
+		
+		JButton JAVA = new JButton("\uC790\uBC14");
+		JAVA.setForeground(Color.DARK_GRAY);
+		JAVA.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		JAVA.setBounds(390, 291, 160, 120);
+		panel.add(JAVA);
+		
+		JButton loot = new JButton("\uC9C4\uB85C");
+		loot.setForeground(Color.DARK_GRAY);
+		loot.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		loot.setBounds(562, 291, 160, 120);
+		panel.add(loot);
+		
+		JButton chemi = new JButton("\uD654\uD559");
+		chemi.setForeground(Color.DARK_GRAY);
+		chemi.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
+		chemi.setBounds(46, 421, 160, 120);
+		panel.add(chemi);
 		setVisible(true);
-		
-		JLabel lblNewLabel = new JLabel("\uACFC\uBAA9\uBA85");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewLabel);
-		
-		JLabel label = new JLabel("\uC120\uC0DD\uB2D8 \uC131\uD568");
-		add(label);
-		
-		subjectname = new JTextField();
-		add(subjectname);
-		subjectname.setColumns(10);
-		
-		teacher = new JTextField();
-		add(teacher);
-		teacher.setColumns(10);
-		
-		JLabel lblE = new JLabel("E\uBA54\uC77C");
-		add(lblE);
-		
-		JLabel label_1 = new JLabel("");
-		add(label_1);
 
 	}
 }

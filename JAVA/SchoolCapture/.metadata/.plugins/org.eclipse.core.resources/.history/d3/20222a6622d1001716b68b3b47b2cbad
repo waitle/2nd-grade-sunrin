@@ -1,0 +1,21 @@
+public class TTdata{
+	static int runtime = 50;
+	static int lessoncount = 7;
+	final static int breaktime = 10;
+	final static int lunchtime = 50;
+	static String[] date = { "월", "화", "수", "목", "금" };
+	static String[][] subjects = new String[][] {
+		{"\uC0C1\uACBD", "\uC77C\uBCF8\uC5B4", "\uBBF8\uC801", "\uC790\uBC14", "\uCCB4\uC721"},
+		{"\uBBF8\uC801", "\uC0C1\uACBD", "\uAC9C\uD504", "\uC790\uBC14", "\uB514\uC77C"},
+		{"\uBB38\uD559", "\uC790\uBC14", "\uAC9C\uD504", "\uC6F9\uD5041", "\uC601\uC5B4"},
+		{"\uC77C\uBCF8\uC5B4", "\uC790\uBC14", "\uC6F9\uD5041", "\uC6F9\uD5041", "\uC9C4\uB85C"},
+		{"\uC790\uBC14", "\uC74C\uC545", "\uD654\uD559", "\uC601\uC5B4", "\uBBF8\uC801"},
+		{"\uC790\uBC14", "\uC601\uC5B4", "\uBB38\uD559", "\uC77C\uBCF8\uC5B4", null},
+		{"\uD654\uD559", "\uCCB4\uC721", null, "\uBBF8\uC801", null},
+	};
+	public static String getlessoncount()
+	{
+		return String.valueOf(lessoncount);
+		
+	}
+}

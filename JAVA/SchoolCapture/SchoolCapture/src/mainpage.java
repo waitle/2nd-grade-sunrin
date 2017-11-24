@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.Toolkit;
 
 import java.awt.event.ActionEvent;
@@ -22,9 +24,6 @@ public class mainpage extends JFrame{
 	public Esub sSet = null;//과목을 설정하는 패널
 	public Etime tSet = null;//시간표를 설정하는 패널
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -32,7 +31,7 @@ public class mainpage extends JFrame{
 				try {
 					mainpage frame = new mainpage();
 					Loadfile lf = new Loadfile();
-					Esub EE = new Esub();
+					Subjects EE = new Subjects();
 					frame.getContentPane().add(lf);//드래그앤 드롭 활성화
 					
 					frame.timetable = new View();
@@ -50,13 +49,8 @@ public class mainpage extends JFrame{
 				}
 			}
 		});
-		
-		
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public mainpage() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(mainpage.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
@@ -69,8 +63,8 @@ public class mainpage extends JFrame{
 		
 		JMenuItem [] mainItems = new JMenuItem[2];//메뉴바 아이템들 미리추가
 		String [] mainTitles = {"Subjects", "Timetable"};
-		JMenuItem [] settingsItems = new JMenuItem[2];
-		String [] settingsTitles = {"Subjects Setting", "Timetable Setting"};
+		JMenuItem [] settingsItems = new JMenuItem[3];
+		String [] settingsTitles = {"Subjects Setting", "Timetable Setting", "Easter Egg"};
 		
 		JMenu main = new JMenu("Main");//메인 메뉴추가
 		menuBar.add(main);
@@ -96,6 +90,8 @@ public class mainpage extends JFrame{
 		contentPane.setLayout(null);
 		
 		
+		
+		
 	}
 	public class MenuActionListener extends JFrame implements ActionListener {
 
@@ -112,11 +108,14 @@ public class mainpage extends JFrame{
 				change("Timetable");
 				break;
 			case "Subjects Setting"://settings-Subject settings
-				change("SSet");
+				JOptionPane.showMessageDialog(null, "이 기능은 아직 개발중에 있습니다");
+				//change("SSet"); // update needed
 				break;
 			case "Timetable Setting"://Settings-Timetable settings
 				change("TSet");
 				break;
+			case "Easter Egg":
+				JOptionPane.showMessageDialog(null, "프로그램 유통기한 \n 2018.11.14 24:00");
 			}
 				
 

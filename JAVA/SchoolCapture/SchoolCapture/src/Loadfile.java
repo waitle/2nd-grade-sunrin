@@ -14,6 +14,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.StringTokenizer;
 
 import javax.swing.JOptionPane;
@@ -23,7 +27,6 @@ import org.apache.commons.imaging.Imaging;
 import org.apache.commons.imaging.common.IImageMetadata;
 import org.apache.commons.imaging.formats.jpeg.JpegImageMetadata;
 import org.apache.commons.imaging.formats.tiff.constants.ExifTagConstants;
-import org.apache.commons.imaging.formats.tiff.constants.TiffTagConstants;
 
 @SuppressWarnings("serial")
 public class Loadfile extends JPanel implements DropTargetListener {
@@ -40,9 +43,13 @@ public class Loadfile extends JPanel implements DropTargetListener {
 	OutputStream os = null;
 	BufferedOutputStream bos = null;
 	int tempcopy;// 파일복사시 temp
-	int status;//파일복사유무 (close 처리)
+	int status;// 파일복사유무 (close 처리)
 	int dropstatus;// 드롭 상태
 	String taken;
+	String[] compare;
+	int date;
+	int time;
+
 	public Loadfile() {
 
 		dt = new DropTarget(this, DnDConstants.ACTION_COPY_OR_MOVE, this, true, null);
@@ -98,78 +105,91 @@ public class Loadfile extends JPanel implements DropTargetListener {
 						filetype = st.nextToken();
 					}
 					System.out.println("file type:" + filetype);
+					st2 = new StringTokenizer(filelocaion, "\\");// 파일이름만 분리
+					while (st2.hasMoreTokens()) {
+						filename = st2.nextToken();
+					}
 
-					if (filetype.equals("jpg") || filetype.equals("jpeg") || filetype.equals("JPG") || filetype.equals("JPEG"))// 파일
+					if (filetype.equals("jpg") || filetype.equals("jpeg") || filetype.equals("JPG")
+							|| filetype.equals("JPEG"))// 파일
 					{
 						status = 1;
 						System.out.println("image confirmed");
-
-						st2 = new StringTokenizer(filelocaion, "\\");// 확장자만 분리
-						while (st2.hasMoreTokens())// 마지막 토큰을 반환
-						{
-							filename = st2.nextToken();
-						}
 						System.out.println("file name :" + filename);
 
-						is = new FileInputStream(filelocaion);// 처리속도 향상
-						bis = new BufferedInputStream(is);
-						os = new FileOutputStream(path.getAbsolutePath() + "\\UploadedFiles\\" + filename);
-						bos = new BufferedOutputStream(os);
-
-						while (true)// 파일복사
-						{
-							//파일 메타데이터 불러오기
-							/*
-							IImageMetadata metadata = Imaging.getMetadata(file);
+						// 파일 메타데이터 불러오기
+						IImageMetadata metadata = Imaging.getMetadata(file);
+						try {// exif정보가 없을때를 위함
 							if (metadata instanceof JpegImageMetadata) {
-							    JpegImageMetadata jpegMetadata = (JpegImageMetadata) metadata;
+								JpegImageMetadata jpegMetadata = (JpegImageMetadata) metadata;
+								taken = jpegMetadata
+										.findEXIFValueWithExactMatch(ExifTagConstants.EXIF_TAG_DATE_TIME_ORIGINAL)
+										.getStringValue();
+								compare = taken.split(":");
+								String[] temp = compare[2].split(" ");
+								date = Integer.parseInt(compare[0]) * 10000 + Integer.parseInt(compare[1]) * 100
+										+ Integer.parseInt(temp[0]);// yyyymmdd
+								time = Integer.parseInt(temp[1]) * 10000 + Integer.parseInt(compare[3]) * 100
+										+ Integer.parseInt(compare[4]);// hhmmss
+								System.out.println(taken + "날짜" + date + "시간" + time);
 
-							    //String manufacturer = jpegMetadata.findEXIFValueWithExactMatch(TiffTagConstants.TIFF_TAG_MAKE).getStringValue();
-							    //String model = jpegMetadata.findEXIFValueWithExactMatch(TiffTagConstants.TIFF_TAG_MODEL).getStringValue();
-							    taken = jpegMetadata.findEXIFValueWithExactMatch(ExifTagConstants.EXIF_TAG_DATE_TIME_ORIGINAL).getStringValue();
-							}*/
-							//날짜가 익셉션리스트에 있을경우
-							//리스트 내 알고리즘 실행
-							//아닐경우 데이터 알고리즘 실행
-							//TT서브젝트 과목/복사파일
-							tempcopy = bis.read();
-							if (tempcopy == -1)
-								break;
-							bos.write(tempcopy);
+								for (int c = 0; c < TTdataException.ekscnr.size(); c++) {
+									if (Integer.parseInt(TTdataException.ekscnr.get(c).ExceptedDATE) == date)// 예외처리된
+									{
+										System.out.println("예외처리됨");
+										for (int s = 0; s < 7; s++) {
+											if (TTdataException.ekscnr.get(c).getstarttime(s + 1) < time
+													&& time < TTdataException.ekscnr.get(c).getendtime(s + 1))// 몇교시
+											{
+												System.out.println(s + "교시");
+												DateFormat a = new SimpleDateFormat("yyyyMMdd");
+												Date skf = a.parse(String.valueOf(date));
+												Calendar cal = Calendar.getInstance();
+												cal.setTime(skf);
+												int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
+												if (dayNum == 1 || dayNum == 7)
+													break;
+												copypic(TTdata.subjects[s][dayNum]);
+												break;
+											}
+										}
+									}
+								}
+								System.out.println("스태틱사진임");
+								for (int s = 0; s < 7; s++) {
+									System.out.println(
+											"start" + TTdata.getstarttime(s + 1) + "end: " + TTdata.getendtime(s + 1));
+									if (TTdata.getstarttime(s + 1) < time && time < TTdata.getendtime(s + 1))// 몇교시
+									{
+										System.out.println(s + "교시");
+										DateFormat a = new SimpleDateFormat("yyyyMMdd");
+										Date skf = a.parse(String.valueOf(date));
+										Calendar cal = Calendar.getInstance();
+										cal.setTime(skf);
+										int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
+										if (dayNum == 1 || dayNum == 7)
+											break;
+										System.out.println(dayNum);
+										System.out.println(TTdata.subjects[s][dayNum - 2]);
+										copypic(TTdata.subjects[s][dayNum - 2]);
+										break;
+									}
+								}
+							}
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "EXIF정보가 없는 사진입니다");
 						}
 
-					} else
-						JOptionPane.showMessageDialog(null, "업로드된 파일중 사진파일이 아니거나 지원하지 않는 확장자가 있습니다.");// 예외
+					} else {
+						String tempoutput = new String();
+						System.out.println(filename);
+						tempoutput = filename + " 은(는)\n 사진파일이 아니거나 지원하지 않는 확장자입니다.";
+						JOptionPane.showMessageDialog(null, tempoutput);// 예외
+					}
 
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			if (status == 1) {
-				try {
-					is.close();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
-					bis.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					os.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					bis.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			}
 		}
 	}
@@ -179,5 +199,53 @@ public class Loadfile extends JPanel implements DropTargetListener {
 		if (dropstatus != 5)
 			System.out.println("dragActionChanged");
 		dropstatus = 5;
+	}
+
+	public void copypic(String subject) throws IOException {
+		is = new FileInputStream(filelocaion);// 처리속도 향상
+		bis = new BufferedInputStream(is);
+		os = new FileOutputStream(path.getAbsolutePath() + "\\UploadedFiles\\" + "\\" + subject + "\\" + filename);
+		bos = new BufferedOutputStream(os);
+		while (true)// 파일복사
+		{
+			tempcopy = bis.read();
+			if (tempcopy == -1) {
+				System.out.println("복사됨");
+				status = 1;
+				break;
+			}
+			bos.write(tempcopy);
+		}
+
+		if (status == 1) {
+			try {
+				is.close();
+				status = 0;
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				bis.close();
+				status = 0;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				os.close();
+				status = 0;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				bis.close();
+				status = 0;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

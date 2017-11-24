@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -19,10 +19,12 @@ public class Esub extends JPanel {
 	private JTextField teacher;
 	private JTextField email;
 	private JTextField phone;
-	static ArrayList<Subjectdata> Sdata = new ArrayList<>();//실질적으로 과목데이터가 저장되는 객체배열
 	private JTable table;
-	static String[][] subjects = new String[7][4];//표 상으로 보여주기 위한 이차원 배열
-	final static String[] cal = { "과목", "선생님", "이메일", "연락처", "업로드된 사진수" };
+	static String[][] subjects = new String[15][4];// 표 상으로 보여주기 위한 이차원 배열
+	Vector<String> date = new Vector<String>(4);
+	String[]raw = new String[4];
+	Vector<String []> data = new Vector<String []>(15);
+	final static String[] cal = { "과목", "선생님", "이메일", "연락처" };
 
 	/**
 	 * Create the this.
@@ -33,9 +35,6 @@ public class Esub extends JPanel {
 		this.setVisible(true);
 		setLayout(null);
 
-		subjects[0][0]="nothing";
-		subjects[0][2]="something";
-		
 		name = new JTextField();
 		name.setColumns(10);
 		name.setBounds(332, 352, 116, 21);
@@ -90,14 +89,19 @@ public class Esub extends JPanel {
 		confirm.setBounds(614, 505, 97, 23);
 		this.add(confirm);
 
-		refreshDB();
-		DefaultTableModel mod = new DefaultTableModel(subjects, cal) { // 셀 수정
+		
+		
+		DefaultTableModel mod = new DefaultTableModel(data, date) { // 셀 수정
 			public boolean isCellEditable(int i, int c) {
 				return false;
 			}
 		};
-
-		//시간표
+		date.add("과목명");
+		date.add("선생님");
+		date.add("이메일");
+		date.add("연락처");
+		System.out.println(date.capacity());
+		// 시간표
 		table = new JTable(mod);
 		table.setModel(mod);
 		table.setBounds(1, 201, 669, 36);
@@ -108,147 +112,55 @@ public class Esub extends JPanel {
 		JScrollPane scrollPaneR = new JScrollPane(table);
 		scrollPaneR.setBounds(59, 35, 671, 273);
 		add(scrollPaneR);
-		
+
 		Loadfile lf = new Loadfile();
 		add(lf);
-		
-		//확인버튼을 눌렀을때
+
+		// 확인버튼을 눌렀을때
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (checktrue(name.getText()))//기존에 있는 과목일 경우
-				{
-					Sdata.get(checklocation(name.getText())).name = name.getText();//name 이름을 가진 객체의 name에 name 텍스트필드의 정보를 넣음
-					Sdata.get(checklocation(name.getText())).teacher = teacher.getText();//name 이름을 가진 객체의 teacher에 teacher필드의 정보를 넣음
-					Sdata.get(checklocation(name.getText())).Email = email.getText();//..
-					Sdata.get(checklocation(name.getText())).phone = phone.getText();
-					
-					refreshDB();
-					mod.fireTableDataChanged();
-					remove(scrollPaneR);
-					add(scrollPaneR);
-					revalidate();
-					repaint();
-					
-				}
-				else {
-					if(!name.getText().equals(""))//빈칸이 아닐경우
-					{
-						// 새로 입력된 값들을 과목데이터에 저장
-						Subjectdata temp = new Subjectdata();
-						temp.name = name.getText();
-						temp.Email = email.getText();
-						temp.phone = phone.getText();
-						temp.teacher = teacher.getText();
-						Sdata.add(temp);
-
-						// 현재 입력되어있는 값들을 초기화
-						name.setText(null);
-						teacher.setText(null);
-						email.setText(null);
-						phone.setText(null);
-
-						// 리스트 새로고침
-						refreshDB();
-						mod.fireTableDataChanged();
-						remove(scrollPaneR);
-						System.out.println("temp");
-						add(scrollPaneR);
-						revalidate();
-						repaint();
-
-					}
-
-				}
+				raw[0]=name.getText();// 필드의 내용들을 요소에 추가
+				raw[1]=teacher.getText();
+				raw[2]=email.getText();
+				raw[3]=phone.getText();
+				data.add(raw);
+				
+				name.setText("");
+				teacher.setText("");
+				email.setText("");
+				phone.setText("");
+				
+				mod.fireTableDataChanged();
 			}
+			
 		});
-		
-		//취소버튼을 눌렀을때
+
+		// 취소버튼을 눌렀을때
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (checktrue(name.getText()))// 이미 추가되어있는 과목인지 검사
-				{
-					Sdata.remove(checklocation(name.getText()));//위치를 찾아서 객체배열로부터 삭제
-					refreshDB();//DB반영
-					System.out.println("state1");
-					name.setText(null);
-					teacher.setText(null);
-					email.setText(null);
-					phone.setText(null);
+				name.setText("");
+				teacher.setText("");
+				email.setText("");
+				phone.setText("");
 
-				} else if(name.getText().equals("")&&teacher.getText().equals("")&&email.getText().equals("")&&phone.getText().equals(""))//모두 빈칸일경우
-				{
-					
-				}
-				else 
-				{
-					name.setText(null);
-					teacher.setText(null);
-					email.setText(null);
-					phone.setText(null);
-				}
+				mod.fireTableDataChanged();
 			}
 		});
-		//시간표 줄을 클릭했을때
+		// 시간표 줄을 클릭했을때
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int row = table.rowAtPoint(e.getPoint());
-		        int col = table.columnAtPoint(e.getPoint());
-		        if (row >= 0 && col >= 0) {
-		        	name.setText(subjects[row][0]);
-					teacher.setText(subjects[row][1]);
-					email.setText(subjects[row][2]);
-					phone.setText(subjects[row][3]);
-		        	
-		        }
+				int col = table.columnAtPoint(e.getPoint());
+				if (row >= 0 && col >= 0) {
+					name.setText(table.getValueAt(row, 0).toString());
+					teacher.setText(table.getValueAt(row, 1).toString());
+					email.setText(table.getValueAt(row, 2).toString());
+					phone.setText(table.getValueAt(row, 3).toString());
+
+				}
 			}
 		});
 
-	}
-
-	public boolean checktrue(String target)// 타겟의 이름을 가진 과목이 있는지 검사
-	{
-		for (int i = 0; i < Sdata.size(); i++) {
-			if (target.equals(Sdata.get(i).name))
-				return true;
-		}
-		return false;
-	}
-
-	public int checklocation(String target)// 타겟 과목의 어레이 리스크상 위치를 반환
-	{
-		for (int i = 0; i < Sdata.size(); i++) {
-			if (target.equals(Sdata.get(i).name))
-				return i;
-		}
-		return -1;
-	}
-
-	public void refreshDB()//
-	{
-		String temp = new String();
-		String temp1 = new String();
-		String temp2 = new String();
-		String temp3 = new String();
-		for (int i = 0; i < Sdata.size(); i++)// Arraylist인 Sdata에있는 과목정보를 이차원
-		// 배열로 전환
-		{
-			try
-			{
-				temp = Sdata.get(i).name;
-				subjects[i][0]=temp;
-				temp1 = Sdata.get(i).teacher;
-				subjects[i][1]=temp1;
-				temp2 = Sdata.get(i).Email;
-				subjects[i][2]=temp2;
-				temp3 = Sdata.get(i).phone;
-				subjects[i][3]=temp3;
-			}
-			catch(ArrayIndexOutOfBoundsException e)
-			{
-				System.out.println(e.toString());
-			}
-		}
-		System.out.println("subject count :" + Sdata.size());
 	}
 }

@@ -2,6 +2,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import java.util.Calendar;
@@ -20,6 +21,7 @@ public class Etime extends JPanel {
 	private JTable table;
 	private JTextField currentlessoncount;
 	private JTextField txtYyyymd;
+	String [] inputstring;
 
 	/**
 	 * Create the panel.
@@ -34,7 +36,12 @@ public class Etime extends JPanel {
 		add(lf);
 		
 		//시간표
-		table = new JTable(TTdata.subjects, TTdata.date);
+		DefaultTableModel model = new DefaultTableModel(TTdata.subjects, TTdata.date) { // 셀 수정
+			public boolean isCellEditable(int i, int c) {
+				return false;
+			}
+		};
+		table = new JTable(model);
 		table.setRowHeight(55); // 칸의 세로 크기
 		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
 		table.getTableHeader().setResizingAllowed(false); // 크기 수정 불가
@@ -57,9 +64,6 @@ public class Etime extends JPanel {
 		instant_status.setBackground(Color.DARK_GRAY);
 		instant_status.setBounds(450, 320, 130, 30);
 		this.add(instant_status);
-
-		//Date today = new Date();
-		//int month = today.getMonth() + 1;
 
 		//수업시간 선택라벨
 		JLabel time = new JLabel("\uC218\uC5C5\uC2DC\uAC04");
@@ -100,7 +104,7 @@ public class Etime extends JPanel {
 
 		//수업시수
 		currentlessoncount = new JTextField();
-		currentlessoncount.setForeground(Color.LIGHT_GRAY);
+		currentlessoncount.setForeground(Color.DARK_GRAY);
 		currentlessoncount.setText(TTdata.getlessoncount());//미리셋팅
 		currentlessoncount.setBounds(260, 437, 120, 21);
 		this.add(currentlessoncount);
@@ -127,7 +131,7 @@ public class Etime extends JPanel {
 
 		//인스턴트되는 날짜
 		txtYyyymd = new JTextField();
-		txtYyyymd.setForeground(Color.LIGHT_GRAY);
+		txtYyyymd.setForeground(Color.DARK_GRAY);
 		txtYyyymd.setBounds(260, 372, 116, 21);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Calendar c1 = Calendar.getInstance();//현재날짜로 미리셋팅
@@ -143,19 +147,6 @@ public class Etime extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (static_status.isSelected())// 스태틱 모드일경우
 				{
-					// 입력된 시간표과목들 저장
-					for (int i = 0; i < TTdata.lessoncount-1; i++)// 시간표의 처음부터
-					{
-						for (int j = 0; i < 5; j++) {
-							System.out.print(i);
-							System.out.println(j);
-							if(table.getValueAt(i, j)!=null&&TTdata.subjects[i][j]!=null)
-							{
-								TTdata.subjects[i][j] = table.getValueAt(i, j).toString();
-							}
-							
-						}
-					}
 					// 수업시간 저장
 					if (R40.isSelected()) {
 						TTdata.runtime = 40;
@@ -170,13 +161,8 @@ public class Etime extends JPanel {
 				}
 				else if (instant_status.isSelected())// 인스턴트 모드일경우
 				{
+					System.out.println("copy starat");
 					TTdataException temp = new TTdataException();
-					for (int i = 0; i < TTdata.lessoncount-1; i++)// 시간표의 처음부터
-					{
-						for (int j = 0; i < 4; j++) {
-							temp.subjects[i][j] = table.getValueAt(i, j).toString();//시간표복사
-						}
-					}
 					// 수업시간 복사
 					if (R40.isSelected()) {
 						temp.runtime = 40;
@@ -186,8 +172,17 @@ public class Etime extends JPanel {
 						temp.runtime = 50;
 					}
 					// 레슨카운트 복사
-					temp.lessoncount = Integer.parseInt(currentlessoncount.getText());
 					temp.ExceptedDATE = txtYyyymd.getText();
+					temp.lessoncount = Integer.parseInt(currentlessoncount.getText());
+					for(int i=0;i<TTdataException.ekscnr.size();i++)//이미 추가되어있는 날짜는 삭제
+					{
+						if(TTdataException.ekscnr.get(i).ExceptedDATE.equals(temp.ExceptedDATE)||TTdataException.ekscnr.get(i).lessoncount==temp.lessoncount)
+						{
+							TTdataException.ekscnr.remove(i);
+							System.out.println("exception overlaped");
+						}
+					}
+					
 					TTdataException.ekscnr.add(temp);//단축데이터에 추가
 				}
 			}
