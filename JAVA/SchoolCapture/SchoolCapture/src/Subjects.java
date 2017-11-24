@@ -1,27 +1,15 @@
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.Label;
 import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
 import java.awt.FlowLayout;
-import java.awt.Component;
-import javax.swing.Box;
 
 public class Subjects extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField subjectname;
 	private JTextField teacher;
 
@@ -31,6 +19,7 @@ public class Subjects extends JPanel {
 	public Subjects() {
 		setBackground(Color.PINK);
 		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setVisible(true);
 		
 		JLabel lblNewLabel = new JLabel("\uACFC\uBAA9\uBA85");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

@@ -1,0 +1,66 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Label;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+public class warning extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					warning frame = new warning();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public warning() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 277, 163);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton ok = new JButton("\uD655\uC778");
+		ok.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		ok.setBackground(Color.LIGHT_GRAY);
+		ok.setBounds(81, 80, 97, 23);
+		contentPane.add(ok);
+		
+		Label label = new Label("\uC5C5\uB85C\uB4DC\uB41C \uD30C\uC77C\uC911 \uC0AC\uC9C4\uD30C\uC77C\uC774 \uC544\uB2C8\uAC70\uB098");
+		label.setBounds(23, 28, 248, 23);
+		contentPane.add(label);
+		
+		Label label_1 = new Label("\uC9C0\uC6D0\uD558\uC9C0 \uC54A\uB294 \uD655\uC7A5\uC790\uAC00 \uC788\uC2B5\uB2C8\uB2E4.");
+		label_1.setBounds(23, 51, 200, 23);
+		contentPane.add(label_1);
+	}
+}

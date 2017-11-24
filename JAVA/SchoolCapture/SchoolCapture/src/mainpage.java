@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class mainpage extends JFrame{
 
 	
@@ -31,12 +32,14 @@ public class mainpage extends JFrame{
 				try {
 					mainpage frame = new mainpage();
 					Loadfile lf = new Loadfile();
+					Esub EE = new Esub();
 					frame.getContentPane().add(lf);//드래그앤 드롭 활성화
 					
 					frame.timetable = new View();
 					frame.tSet = new Etime();
 					frame.subject = new Subjects();
 					frame.sSet = new Esub();
+					frame.getContentPane().add(EE);
 					
 					frame.getContentPane();
 					frame.setVisible(true);
@@ -55,7 +58,8 @@ public class mainpage extends JFrame{
 	 * Create the frame.
 	 */
 	public mainpage() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("./"));
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(mainpage.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
 		setTitle("School Capture(Beta)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -85,16 +89,19 @@ public class mainpage extends JFrame{
 			settingsItems[i].addActionListener(listener);
 			settings.add(settingsItems[i]);
 		}
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		
 	}
 	public class MenuActionListener extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
 			String tmp = e.getActionCommand();
 			
 			switch(tmp){

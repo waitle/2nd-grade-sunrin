@@ -1,0 +1,34 @@
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class View extends JPanel {
+
+	private JTable table;
+
+	public View() {
+		this.setSize(800, 600);
+		setLayout(null);
+		TTdata.subjects[0][1] = "science";
+
+		DefaultTableModel mod = new DefaultTableModel(TTdata.subjects, TTdata.date) {
+			// 셀 수정 못하게 하는 부분
+			public boolean isCellEditable(int i, int c) {
+				return false;
+			}
+		};
+		table = new JTable(mod);
+		table.setRowHeight(50); // 칸의 세로 크기
+		table.setBounds(41, 41, 400, 400); // 표 x,y,표크기 x,y
+		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
+		table.getTableHeader().setResizingAllowed(true); // 크기 수정 불가
+
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(174, 16024, 452, 428);
+		this.add(scrollPane);
+
+	}
+}

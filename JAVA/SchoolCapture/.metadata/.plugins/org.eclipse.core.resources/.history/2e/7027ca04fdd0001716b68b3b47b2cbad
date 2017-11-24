@@ -1,0 +1,16 @@
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class View extends JPanel {
+	public View() {
+		this.setSize(800, 550);
+		setLayout(null);
+		setVisible(true);
+		TTdata.subjects[0][1] = "science";
+
+		
+	}
+
+}

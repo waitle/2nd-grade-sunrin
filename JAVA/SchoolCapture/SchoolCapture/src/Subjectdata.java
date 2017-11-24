@@ -4,5 +4,4 @@ public class Subjectdata {
 	String teacher = new String();
 	String Email = new String();
 	String phone = new String();
-	
 }

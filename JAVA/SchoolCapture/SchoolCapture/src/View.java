@@ -1,57 +1,36 @@
-import java.awt.EventQueue;
+import java.awt.Color;
 
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class View extends JPanel {
-
-	private JPanel contentPane;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					View frame = new View();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public View() {
-		this.setSize(800, 600);
+		setBackground(Color.DARK_GRAY);
+		this.setSize(800, 550);
 		this.setVisible(true);
-
-		TTdata forview = new TTdata();
-
-		DefaultTableModel mod = new DefaultTableModel(forview.subjects, forview.date) {
-			// 셀 수정 못하게 하는 부분
+		setLayout(null);
+		
+		Loadfile lf = new Loadfile();
+		add(lf);
+				
+		DefaultTableModel mod = new DefaultTableModel(TTdata.subjects, TTdata.date) { // 셀 수정
 			public boolean isCellEditable(int i, int c) {
 				return false;
 			}
 		};
-
 		table = new JTable(mod);
-		table.setRowHeight(50); // 칸의 세로 크기
-
-		table.setBounds(41, 41, 400, 400); // 표 x,y,표크기 x,y
+		table.setRowHeight(55); // 칸의 세로 크기
 		table.getTableHeader().setReorderingAllowed(false); // 이동 불가
-		table.getTableHeader().setResizingAllowed(true); // 크기 수정 불가
+		table.getTableHeader().setResizingAllowed(false); // 크기 수정 불가
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(40, 40, 400, 375);
+		scrollPane.setBounds(150, 25, 500, 410);
 		this.add(scrollPane);
-
+		
 	}
+
 }
