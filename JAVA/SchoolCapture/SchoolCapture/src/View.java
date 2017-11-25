@@ -10,7 +10,6 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Component;
 import java.awt.Font;
 
 @SuppressWarnings("serial")

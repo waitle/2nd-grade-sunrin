@@ -204,7 +204,7 @@ public class Etime extends JPanel {
 					temp.lessoncount = Integer.parseInt(currentlessoncount.getText());
 					for(int i=0;i<TTdataException.ekscnr.size();i++)//이미 추가되어있는 날짜는 삭제
 					{
-						if(TTdataException.ekscnr.get(i).ExceptedDATE.equals(temp.ExceptedDATE)||TTdataException.ekscnr.get(i).lessoncount==temp.lessoncount)
+						if(TTdataException.ekscnr.get(i).ExceptedDATE.equals(temp.ExceptedDATE))
 						{
 							TTdataException.ekscnr.remove(i);
 							System.out.println("exception overlaped");

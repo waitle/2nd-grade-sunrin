@@ -3,7 +3,6 @@ INDEX VERSION 1.130+C:\Users\rlaxo\OneDrive\Documents\2nd-grade-sunrin\JAVA\Scho
 3643810303.index
 3314433690.index
 2997567257.index
-545477942.index
 2911469802.index
 3726721386.index
 543038442.index

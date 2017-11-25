@@ -100,7 +100,6 @@ public class Esub extends JPanel {
 		date.add("선생님");
 		date.add("이메일");
 		date.add("연락처");
-		System.out.println(date.capacity());
 		// 시간표
 		table = new JTable(mod);
 		table.setModel(mod);

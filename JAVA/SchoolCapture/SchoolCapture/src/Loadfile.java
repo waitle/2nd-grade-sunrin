@@ -147,7 +147,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 												int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
 												if (dayNum == 1 || dayNum == 7)
 													break;
-												copypic(TTdata.subjects[s][dayNum]);
+												copypic(TTdata.subjects[s][dayNum-2]);
 												break;
 											}
 										}
@@ -172,7 +172,11 @@ public class Loadfile extends JPanel implements DropTargetListener {
 								}
 							}
 						} catch (Exception e) {
-							JOptionPane.showMessageDialog(null, "EXIF정보가 없는 사진입니다");
+							//System.out.println(e.toString());
+							String tempoutput = new String();
+							System.out.println(filename);
+							tempoutput = filename + " 은(는)\n EXIF가 없는 사진입니다.";
+							JOptionPane.showMessageDialog(null, tempoutput);// 예외
 						}
 
 					} else {
