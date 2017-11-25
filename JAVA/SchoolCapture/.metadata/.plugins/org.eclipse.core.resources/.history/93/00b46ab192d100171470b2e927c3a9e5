@@ -69,7 +69,6 @@ public class Etime extends JPanel {
 		}
 		//½ºÅÂÆ½ ¼±ÅÃ
 		JRadioButton static_status = new JRadioButton("static");
-		static_status.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		static_status.setForeground(Color.WHITE);
 		static_status.setBackground(Color.DARK_GRAY);
 		static_status.setSelected(true);
@@ -78,7 +77,6 @@ public class Etime extends JPanel {
 
 		//ÀÎ½ºÅÏÆ® ¼±ÅÃ
 		JRadioButton instant_status = new JRadioButton("instant");
-		instant_status.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		instant_status.setForeground(Color.WHITE);
 		instant_status.setBackground(Color.DARK_GRAY);
 		instant_status.setBounds(450, 320, 130, 30);
@@ -86,14 +84,12 @@ public class Etime extends JPanel {
 
 		//¼ö¾÷½Ã°£ ¼±ÅÃ¶óº§
 		JLabel time = new JLabel("\uC218\uC5C5\uC2DC\uAC04");
-		time.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		time.setForeground(Color.WHITE);
 		time.setBounds(150, 400, 80, 30);
 		this.add(time);
 
 		//40ºÐ ¼±ÅÃ
 		JRadioButton R40 = new JRadioButton("40\uBD84");
-		R40.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		R40.setForeground(Color.WHITE);
 		R40.setBackground(Color.DARK_GRAY);
 		R40.setBounds(238, 400, 62, 30);
@@ -101,7 +97,6 @@ public class Etime extends JPanel {
 
 		//45ºÐ ¼±ÅÃ
 		JRadioButton R45 = new JRadioButton("45\uBD84");
-		R45.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		R45.setForeground(Color.WHITE);
 		R45.setBackground(Color.DARK_GRAY);
 		R45.setBounds(296, 400, 62, 30);
@@ -109,7 +104,6 @@ public class Etime extends JPanel {
 
 		//50ºÐ ¼±ÅÃ
 		JRadioButton R50 = new JRadioButton("50\uBD84");
-		R50.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		R50.setForeground(Color.WHITE);
 		R50.setBackground(Color.DARK_GRAY);
 		R50.setSelected(true);
@@ -135,24 +129,21 @@ public class Etime extends JPanel {
 
 		//¼ö¾÷½Ã¼ö ¶óº§
 		JLabel InputLessonCount = new JLabel("\uC218\uC5C5\uC2DC\uC218");
-		InputLessonCount.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		InputLessonCount.setForeground(Color.WHITE);
 		InputLessonCount.setBounds(150, 440, 57, 15);
 		add(InputLessonCount);
 		
 		//È®ÀÎ¹öÆ°
 		JButton button = new JButton("È®ÀÎ");
-		button.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		button.setFocusPainted(false);
 		button.setBorderPainted(false);
-		button.setForeground(new Color(20, 20, 20));
-		button.setBackground(new Color(240, 240, 240));
+		button.setForeground(Color.DARK_GRAY);
+		button.setBackground(Color.LIGHT_GRAY);
 		button.setBounds(530, 480, 100, 30);
 		this.add(button);
 
 		//ÀÎ½ºÅÏÆ®µÇ´Â ³¯Â¥¶óº§
 		JLabel Editdate = new JLabel("\uC218\uC815\uD560 \uB0A0\uC9DC");
-		Editdate.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		Editdate.setForeground(Color.WHITE);
 		Editdate.setBounds(150, 375, 80, 15);
 		add(Editdate);

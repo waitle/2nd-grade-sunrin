@@ -26,8 +26,6 @@ public class Subjects extends JPanel {
 		panel.setLayout(null);
 		
 		JButton korean = new JButton("\uBB38\uD559");
-		korean.setFocusPainted(false);
-		korean.setBorderPainted(false);
 		korean.setBackground(new Color(220, 220, 220));
 		korean.setForeground(Color.DARK_GRAY);
 		korean.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -40,8 +38,6 @@ public class Subjects extends JPanel {
 		panel.add(korean);
 		
 		JButton design = new JButton("\uB514\uC77C");
-		design.setFocusPainted(false);
-		design.setBorderPainted(false);
 		design.setBackground(new Color(220, 220, 220));
 		design.setForeground(Color.DARK_GRAY);
 		design.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -49,8 +45,6 @@ public class Subjects extends JPanel {
 		panel.add(design);
 		
 		JButton game = new JButton("\uAC9C\uD504");
-		game.setFocusPainted(false);
-		game.setBorderPainted(false);
 		game.setBackground(new Color(220, 220, 220));
 		game.setForeground(Color.DARK_GRAY);
 		game.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -58,8 +52,6 @@ public class Subjects extends JPanel {
 		panel.add(game);
 		
 		JButton math = new JButton("\uBBF8\uC801");
-		math.setFocusPainted(false);
-		math.setBorderPainted(false);
 		math.setBackground(new Color(220, 220, 220));
 		math.setForeground(Color.DARK_GRAY);
 		math.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -67,8 +59,6 @@ public class Subjects extends JPanel {
 		panel.add(math);
 		
 		JButton money = new JButton("\uC0C1\uACBD");
-		money.setFocusPainted(false);
-		money.setBorderPainted(false);
 		money.setBackground(new Color(220, 220, 220));
 		money.setForeground(Color.DARK_GRAY);
 		money.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -76,8 +66,6 @@ public class Subjects extends JPanel {
 		panel.add(money);
 		
 		JButton english = new JButton("\uC601\uC5B4");
-		english.setFocusPainted(false);
-		english.setBorderPainted(false);
 		english.setBackground(new Color(220, 220, 220));
 		english.setForeground(Color.DARK_GRAY);
 		english.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -85,8 +73,6 @@ public class Subjects extends JPanel {
 		panel.add(english);
 		
 		JButton web1 = new JButton("\uC6F9\uD5041");
-		web1.setFocusPainted(false);
-		web1.setBorderPainted(false);
 		web1.setBackground(new Color(220, 220, 220));
 		web1.setForeground(Color.DARK_GRAY);
 		web1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -94,8 +80,6 @@ public class Subjects extends JPanel {
 		panel.add(web1);
 		
 		JButton web2 = new JButton("\uC6F9\uD5042");
-		web2.setFocusPainted(false);
-		web2.setBorderPainted(false);
 		web2.setBackground(new Color(220, 220, 220));
 		web2.setForeground(Color.DARK_GRAY);
 		web2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -103,8 +87,6 @@ public class Subjects extends JPanel {
 		panel.add(web2);
 		
 		JButton music = new JButton("\uC74C\uC545");
-		music.setFocusPainted(false);
-		music.setBorderPainted(false);
 		music.setBackground(new Color(220, 220, 220));
 		music.setForeground(Color.DARK_GRAY);
 		music.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -112,8 +94,6 @@ public class Subjects extends JPanel {
 		panel.add(music);
 		
 		JButton japan = new JButton("\uC77C\uBCF8\uC5B4");
-		japan.setFocusPainted(false);
-		japan.setBorderPainted(false);
 		japan.setBackground(new Color(220, 220, 220));
 		japan.setForeground(Color.DARK_GRAY);
 		japan.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -121,8 +101,6 @@ public class Subjects extends JPanel {
 		panel.add(japan);
 		
 		JButton JAVA = new JButton("\uC790\uBC14");
-		JAVA.setFocusPainted(false);
-		JAVA.setBorderPainted(false);
 		JAVA.setBackground(new Color(220, 220, 220));
 		JAVA.setForeground(Color.DARK_GRAY);
 		JAVA.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -130,8 +108,6 @@ public class Subjects extends JPanel {
 		panel.add(JAVA);
 		
 		JButton loot = new JButton("\uC9C4\uB85C");
-		loot.setFocusPainted(false);
-		loot.setBorderPainted(false);
 		loot.setBackground(new Color(220, 220, 220));
 		loot.setForeground(Color.DARK_GRAY);
 		loot.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
@@ -139,8 +115,6 @@ public class Subjects extends JPanel {
 		panel.add(loot);
 		
 		JButton chemi = new JButton("\uD654\uD559");
-		chemi.setFocusPainted(false);
-		chemi.setBorderPainted(false);
 		chemi.setBackground(new Color(220, 220, 220));
 		chemi.setForeground(Color.DARK_GRAY);
 		chemi.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));

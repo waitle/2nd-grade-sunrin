@@ -145,8 +145,8 @@ public class Etime extends JPanel {
 		button.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
 		button.setFocusPainted(false);
 		button.setBorderPainted(false);
-		button.setForeground(new Color(20, 20, 20));
-		button.setBackground(new Color(240, 240, 240));
+		button.setForeground(Color.DARK_GRAY);
+		button.setBackground(Color.LIGHT_GRAY);
 		button.setBounds(530, 480, 100, 30);
 		this.add(button);
 
