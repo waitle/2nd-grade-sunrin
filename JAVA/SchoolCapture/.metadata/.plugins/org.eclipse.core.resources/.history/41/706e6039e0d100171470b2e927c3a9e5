@@ -155,9 +155,7 @@ public class ViewPic extends JPanel {
 		//삭제버튼
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewPic refresh = new ViewPic(path, subject);
-				removeAll();
-				add(refresh);
+
 				revalidate();
 				repaint();
 			}

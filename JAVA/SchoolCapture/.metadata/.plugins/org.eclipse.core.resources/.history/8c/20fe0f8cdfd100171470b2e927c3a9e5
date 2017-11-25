@@ -73,7 +73,7 @@ public class ViewPic extends JPanel {
 		previous.setBackground(new Color(220, 220, 220));
 		add(previous);
 		
-		JButton delete = new JButton("\uC0C8\uB85C\uACE0\uCE68");
+		JButton delete = new JButton("\uC0AD\uC81C");
 		
 		delete.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
 		delete.setFocusPainted(false);
@@ -155,11 +155,6 @@ public class ViewPic extends JPanel {
 		//»èÁ¦¹öÆ°
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewPic refresh = new ViewPic(path, subject);
-				removeAll();
-				add(refresh);
-				revalidate();
-				repaint();
 			}
 		});
 		add(page.get(0));
@@ -236,7 +231,6 @@ public class ViewPic extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Viewer popup = new Viewer(new ImageIcon(temp));
-				System.out.println("pop up requetsted");
 				/*
 				JDialog dialog = new JDialog();
 				dialog.setUndecorated(true);

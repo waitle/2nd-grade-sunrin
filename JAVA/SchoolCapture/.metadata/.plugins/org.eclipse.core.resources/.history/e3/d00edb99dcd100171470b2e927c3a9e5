@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -24,7 +25,6 @@ public class ViewPic extends JPanel {
 
 
 	ImageIcon back;
-	ImageIcon forsee;
 	Image temp;
 	Image scaled;
 	BufferedImage img;//리스트에 있는 파일의 이미지를 이미지 버퍼로 저장
@@ -59,8 +59,6 @@ public class ViewPic extends JPanel {
 			temp = (Image)img;
 			scaled = temp.getScaledInstance(160, 120, java.awt.Image.SCALE_SMOOTH);//이미지 스케일링
 			back = new ImageIcon(scaled);//아이콘에 넣음
-			scaled = temp.getScaledInstance(160, 120, java.awt.Image.SCALE_SMOOTH);//이미지 스케일링
-			forsee = new ImageIcon(scaled);//아이콘에 넣음
 			createpage(index%16, index/16);
 		}
 
@@ -73,7 +71,7 @@ public class ViewPic extends JPanel {
 		previous.setBackground(new Color(220, 220, 220));
 		add(previous);
 		
-		JButton delete = new JButton("\uC0C8\uB85C\uACE0\uCE68");
+		JButton delete = new JButton("\uC0AD\uC81C");
 		
 		delete.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 		delete.setFocusPainted(false);
@@ -155,11 +153,6 @@ public class ViewPic extends JPanel {
 		//삭제버튼
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewPic refresh = new ViewPic(path, subject);
-				removeAll();
-				add(refresh);
-				revalidate();
-				repaint();
 			}
 		});
 		add(page.get(0));
@@ -236,16 +229,6 @@ public class ViewPic extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Viewer popup = new Viewer(new ImageIcon(temp));
-				System.out.println("pop up requetsted");
-				/*
-				JDialog dialog = new JDialog();
-				dialog.setUndecorated(true);
-				JLabel label = new JLabel(back);
-				dialog.add( label );
-				dialog.pack();
-				dialog.setVisible(true);*/
-				
-				
 			}
 		});
 		//아티클 클릭이벤트
