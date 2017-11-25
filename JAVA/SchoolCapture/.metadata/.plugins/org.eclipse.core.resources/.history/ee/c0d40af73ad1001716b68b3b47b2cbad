@@ -104,6 +104,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 					{
 						filetype = st.nextToken();
 					}
+					System.out.println("file type:" + filetype);
 					st2 = new StringTokenizer(filelocaion, "\\");// 파일이름만 분리
 					while (st2.hasMoreTokens()) {
 						filename = st2.nextToken();
@@ -130,6 +131,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 										+ Integer.parseInt(temp[0]);// yyyymmdd
 								time = Integer.parseInt(temp[1]) * 10000 + Integer.parseInt(compare[3]) * 100
 										+ Integer.parseInt(compare[4]);// hhmmss
+								System.out.println(taken + "날짜" + date + "시간" + time);
 
 								for (int c = 0; c < TTdataException.ekscnr.size(); c++) {
 									if (Integer.parseInt(TTdataException.ekscnr.get(c).ExceptedDATE) == date)// 예외처리된
@@ -155,9 +157,11 @@ public class Loadfile extends JPanel implements DropTargetListener {
 								}
 								System.out.println("스태틱사진임");
 								for (int s = 0; s < 7; s++) {
+									System.out.println(
+											"start" + TTdata.getstarttime(s + 1) + "end: " + TTdata.getendtime(s + 1));
 									if (TTdata.getstarttime(s + 1) < time && time < TTdata.getendtime(s + 1))// 몇교시
 									{
-										System.out.println(String.valueOf(s+1) + "교시");
+										System.out.println(s + "교시");
 										DateFormat a = new SimpleDateFormat("yyyyMMdd");
 										Date skf = a.parse(String.valueOf(date));
 										Calendar cal = Calendar.getInstance();
@@ -165,6 +169,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 										int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
 										if (dayNum == 1 || dayNum == 7)
 											break;
+										System.out.println(dayNum);
 										System.out.println(TTdata.subjects[s][dayNum - 2]);
 										copypic(TTdata.subjects[s][dayNum - 2]);
 										break;

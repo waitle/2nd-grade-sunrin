@@ -1,3 +1,4 @@
+
 public class Subjectdata {
 	String name = new String();
 	String teacher = new String();

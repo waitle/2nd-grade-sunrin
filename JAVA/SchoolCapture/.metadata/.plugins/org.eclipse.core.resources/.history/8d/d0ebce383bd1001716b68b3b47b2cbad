@@ -26,7 +26,6 @@ public class Subjects extends JPanel {
 		panel.setLayout(null);
 		
 		JButton korean = new JButton("\uBB38\uD559");
-		korean.setBackground(new Color(220, 220, 220));
 		korean.setForeground(Color.DARK_GRAY);
 		korean.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		korean.addActionListener(new ActionListener() {
@@ -38,84 +37,72 @@ public class Subjects extends JPanel {
 		panel.add(korean);
 		
 		JButton design = new JButton("\uB514\uC77C");
-		design.setBackground(new Color(220, 220, 220));
 		design.setForeground(Color.DARK_GRAY);
 		design.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		design.setBounds(228, 10, 160, 120);
 		panel.add(design);
 		
 		JButton game = new JButton("\uAC9C\uD504");
-		game.setBackground(new Color(220, 220, 220));
 		game.setForeground(Color.DARK_GRAY);
 		game.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		game.setBounds(400, 10, 160, 120);
 		panel.add(game);
 		
 		JButton math = new JButton("\uBBF8\uC801");
-		math.setBackground(new Color(220, 220, 220));
 		math.setForeground(Color.DARK_GRAY);
 		math.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		math.setBounds(572, 10, 160, 120);
 		panel.add(math);
 		
 		JButton money = new JButton("\uC0C1\uACBD");
-		money.setBackground(new Color(220, 220, 220));
 		money.setForeground(Color.DARK_GRAY);
 		money.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		money.setBounds(56, 140, 160, 120);
 		panel.add(money);
 		
 		JButton english = new JButton("\uC601\uC5B4");
-		english.setBackground(new Color(220, 220, 220));
 		english.setForeground(Color.DARK_GRAY);
 		english.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		english.setBounds(228, 140, 160, 120);
 		panel.add(english);
 		
 		JButton web1 = new JButton("\uC6F9\uD5041");
-		web1.setBackground(new Color(220, 220, 220));
 		web1.setForeground(Color.DARK_GRAY);
 		web1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		web1.setBounds(400, 140, 160, 120);
 		panel.add(web1);
 		
 		JButton web2 = new JButton("\uC6F9\uD5042");
-		web2.setBackground(new Color(220, 220, 220));
 		web2.setForeground(Color.DARK_GRAY);
 		web2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		web2.setBounds(572, 140, 160, 120);
 		panel.add(web2);
 		
 		JButton music = new JButton("\uC74C\uC545");
-		music.setBackground(new Color(220, 220, 220));
 		music.setForeground(Color.DARK_GRAY);
 		music.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		music.setBounds(56, 270, 160, 120);
 		panel.add(music);
 		
 		JButton japan = new JButton("\uC77C\uBCF8\uC5B4");
-		japan.setBackground(new Color(220, 220, 220));
 		japan.setForeground(Color.DARK_GRAY);
 		japan.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		japan.setBounds(228, 270, 160, 120);
 		panel.add(japan);
 		
 		JButton JAVA = new JButton("\uC790\uBC14");
-		JAVA.setBackground(new Color(220, 220, 220));
 		JAVA.setForeground(Color.DARK_GRAY);
 		JAVA.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		JAVA.setBounds(400, 270, 160, 120);
 		panel.add(JAVA);
 		
 		JButton loot = new JButton("\uC9C4\uB85C");
-		loot.setBackground(new Color(220, 220, 220));
 		loot.setForeground(Color.DARK_GRAY);
 		loot.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		loot.setBounds(572, 270, 160, 120);
 		panel.add(loot);
 		
 		JButton chemi = new JButton("\uD654\uD559");
-		chemi.setBackground(new Color(220, 220, 220));
 		chemi.setForeground(Color.DARK_GRAY);
 		chemi.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		chemi.setBounds(56, 400, 160, 120);
