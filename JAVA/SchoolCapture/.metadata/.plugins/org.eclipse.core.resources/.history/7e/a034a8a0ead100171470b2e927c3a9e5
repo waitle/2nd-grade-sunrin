@@ -72,7 +72,6 @@ public class Subjects extends JPanel {
 		korean.setBackground(new Color(51, 204, 255));
 		korean.setForeground(Color.WHITE);
 		korean.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
-		
 		korean.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ViewPic korean = new ViewPic(path + "\\UploadedFiles\\" + "¹®ÇÐ", "¹®ÇÐ");

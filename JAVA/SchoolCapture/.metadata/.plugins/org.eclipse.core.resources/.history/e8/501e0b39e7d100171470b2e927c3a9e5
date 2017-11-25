@@ -23,7 +23,7 @@ public class Subjects extends JPanel {
 		add(scrollPane);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(153, 204, 255));
+		panel.setBackground(Color.DARK_GRAY);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
 		
@@ -69,10 +69,9 @@ public class Subjects extends JPanel {
 		JButton korean = new JButton("\uBB38\uD559");
 		korean.setFocusPainted(false);
 		korean.setBorderPainted(false);
-		korean.setBackground(new Color(51, 204, 255));
-		korean.setForeground(Color.WHITE);
+		korean.setBackground(new Color(220, 220, 220));
+		korean.setForeground(Color.DARK_GRAY);
 		korean.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
-		
 		korean.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ViewPic korean = new ViewPic(path + "\\UploadedFiles\\" + "¹®ÇÐ", "¹®ÇÐ");
@@ -97,8 +96,8 @@ public class Subjects extends JPanel {
 		});
 		design.setFocusPainted(false);
 		design.setBorderPainted(false);
-		design.setBackground(new Color(51, 204, 255));
-		design.setForeground(Color.WHITE);
+		design.setBackground(new Color(220, 220, 220));
+		design.setForeground(Color.DARK_GRAY);
 		design.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		design.setBounds(228, 10, 160, 120);
 		panel.add(design);
@@ -115,8 +114,8 @@ public class Subjects extends JPanel {
 		});
 		game.setFocusPainted(false);
 		game.setBorderPainted(false);
-		game.setBackground(new Color(51, 204, 255));
-		game.setForeground(Color.WHITE);
+		game.setBackground(new Color(220, 220, 220));
+		game.setForeground(Color.DARK_GRAY);
 		game.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		game.setBounds(400, 10, 160, 120);
 		panel.add(game);
@@ -133,8 +132,8 @@ public class Subjects extends JPanel {
 		});
 		math.setFocusPainted(false);
 		math.setBorderPainted(false);
-		math.setBackground(new Color(51, 204, 255));
-		math.setForeground(Color.WHITE);
+		math.setBackground(new Color(220, 220, 220));
+		math.setForeground(Color.DARK_GRAY);
 		math.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		math.setBounds(572, 10, 160, 120);
 		panel.add(math);
@@ -151,8 +150,8 @@ public class Subjects extends JPanel {
 		});
 		money.setFocusPainted(false);
 		money.setBorderPainted(false);
-		money.setBackground(new Color(51, 204, 255));
-		money.setForeground(Color.WHITE);
+		money.setBackground(new Color(220, 220, 220));
+		money.setForeground(Color.DARK_GRAY);
 		money.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		money.setBounds(56, 140, 160, 120);
 		panel.add(money);
@@ -169,8 +168,8 @@ public class Subjects extends JPanel {
 		});
 		english.setFocusPainted(false);
 		english.setBorderPainted(false);
-		english.setBackground(new Color(51, 204, 255));
-		english.setForeground(Color.WHITE);
+		english.setBackground(new Color(220, 220, 220));
+		english.setForeground(Color.DARK_GRAY);
 		english.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		english.setBounds(228, 140, 160, 120);
 		panel.add(english);
@@ -187,8 +186,8 @@ public class Subjects extends JPanel {
 		});
 		web1.setFocusPainted(false);
 		web1.setBorderPainted(false);
-		web1.setBackground(new Color(51, 204, 255));
-		web1.setForeground(Color.WHITE);
+		web1.setBackground(new Color(220, 220, 220));
+		web1.setForeground(Color.DARK_GRAY);
 		web1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		web1.setBounds(400, 140, 160, 120);
 		panel.add(web1);
@@ -205,8 +204,8 @@ public class Subjects extends JPanel {
 		});
 		web2.setFocusPainted(false);
 		web2.setBorderPainted(false);
-		web2.setBackground(new Color(51, 204, 255));
-		web2.setForeground(Color.WHITE);
+		web2.setBackground(new Color(220, 220, 220));
+		web2.setForeground(Color.DARK_GRAY);
 		web2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		web2.setBounds(572, 140, 160, 120);
 		panel.add(web2);
@@ -223,8 +222,8 @@ public class Subjects extends JPanel {
 		});
 		music.setFocusPainted(false);
 		music.setBorderPainted(false);
-		music.setBackground(new Color(51, 204, 255));
-		music.setForeground(Color.WHITE);
+		music.setBackground(new Color(220, 220, 220));
+		music.setForeground(Color.DARK_GRAY);
 		music.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		music.setBounds(56, 270, 160, 120);
 		panel.add(music);
@@ -241,8 +240,8 @@ public class Subjects extends JPanel {
 		});
 		japan.setFocusPainted(false);
 		japan.setBorderPainted(false);
-		japan.setBackground(new Color(51, 204, 255));
-		japan.setForeground(Color.WHITE);
+		japan.setBackground(new Color(220, 220, 220));
+		japan.setForeground(Color.DARK_GRAY);
 		japan.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		japan.setBounds(228, 270, 160, 120);
 		panel.add(japan);
@@ -259,8 +258,8 @@ public class Subjects extends JPanel {
 		});
 		JAVA.setFocusPainted(false);
 		JAVA.setBorderPainted(false);
-		JAVA.setBackground(new Color(51, 204, 255));
-		JAVA.setForeground(Color.WHITE);
+		JAVA.setBackground(new Color(220, 220, 220));
+		JAVA.setForeground(Color.DARK_GRAY);
 		JAVA.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		JAVA.setBounds(400, 270, 160, 120);
 		panel.add(JAVA);
@@ -277,8 +276,8 @@ public class Subjects extends JPanel {
 		});
 		loot.setFocusPainted(false);
 		loot.setBorderPainted(false);
-		loot.setBackground(new Color(51, 204, 255));
-		loot.setForeground(Color.WHITE);
+		loot.setBackground(new Color(220, 220, 220));
+		loot.setForeground(Color.DARK_GRAY);
 		loot.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		loot.setBounds(572, 270, 160, 120);
 		panel.add(loot);
@@ -295,8 +294,8 @@ public class Subjects extends JPanel {
 		});
 		chemi.setFocusPainted(false);
 		chemi.setBorderPainted(false);
-		chemi.setBackground(new Color(51, 204, 255));
-		chemi.setForeground(Color.WHITE);
+		chemi.setBackground(new Color(220, 220, 220));
+		chemi.setForeground(Color.DARK_GRAY);
 		chemi.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 		chemi.setBounds(56, 400, 160, 120);
 		panel.add(chemi);

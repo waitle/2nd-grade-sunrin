@@ -56,7 +56,6 @@ public class ViewPic extends JPanel {
 			} catch (IOException e) {
 			}
 			temp = (Image)img;
-			forsee = new ImageIcon(temp);
 			back = new ImageIcon(temp.getScaledInstance(160, 120, java.awt.Image.SCALE_FAST));//아이콘에 넣음
 			createpage(index%16, index/16);
 		}
@@ -228,17 +227,11 @@ public class ViewPic extends JPanel {
 		article.setBounds(56 + (index % 4) * 172, 10 + (index / 4) * 130, 160, 120);
 		article.setVisible(true);
 		JLabel picLabel = new JLabel(back);
-		picLabel.getIcon();
 		article.add(picLabel);
-		JLabel rawpic = new JLabel(forsee);
-		picLabel.getIcon();
-		article.add(rawpic);
 		article.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//@SuppressWarnings("unused")
-				@SuppressWarnings("unused")
-				Viewer popup = new Viewer((ImageIcon)rawpic.getIcon());
+				Viewer popup = new Viewer(new ImageIcon(temp));
 				System.out.println("pop up requetsted");
 				/*
 				JDialog dialog = new JDialog();

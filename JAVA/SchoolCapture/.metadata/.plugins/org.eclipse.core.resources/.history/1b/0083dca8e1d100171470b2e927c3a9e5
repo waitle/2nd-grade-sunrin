@@ -14,4 +14,10 @@ public class Viewer extends JFrame {
     setSize(1000, 750);
     setVisible(true);
   }
+
+  public static void main(ImageIcon input) {
+	  System.out.println("main mathod called");
+    new Viewer(input);
+  }
 }
+      

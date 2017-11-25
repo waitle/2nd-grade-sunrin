@@ -54,7 +54,7 @@ public class mainpage extends JFrame{
 	public mainpage() {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(mainpage.class.getResource("/com/sun/javafx/scene/web/skin/Paste_16x16_JFX.png")));
-		setTitle("School Capture(Release)");
+		setTitle("School Capture(Beta)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		
