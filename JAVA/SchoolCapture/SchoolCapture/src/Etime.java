@@ -130,8 +130,10 @@ public class Etime extends JPanel {
 		currentlessoncount.setForeground(Color.DARK_GRAY);
 		currentlessoncount.setText(TTdata.getlessoncount());//미리셋팅
 		currentlessoncount.setBounds(260, 437, 120, 21);
+		currentlessoncount.setEditable(false);
 		this.add(currentlessoncount);
 		currentlessoncount.setColumns(10);
+		
 
 		//수업시수 라벨
 		JLabel InputLessonCount = new JLabel("\uC218\uC5C5\uC2DC\uC218");
@@ -189,7 +191,7 @@ public class Etime extends JPanel {
 				}
 				else if (instant_status.isSelected())// 인스턴트 모드일경우
 				{
-					System.out.println("copy starat");
+					System.out.println("static date added");
 					TTdataException temp = new TTdataException();
 					// 수업시간 복사
 					if (R40.isSelected()) {
@@ -201,6 +203,7 @@ public class Etime extends JPanel {
 					}
 					// 레슨카운트 복사
 					temp.ExceptedDATE = txtYyyymd.getText();
+					System.out.println("put date " + temp.ExceptedDATE);
 					temp.lessoncount = Integer.parseInt(currentlessoncount.getText());
 					for(int i=0;i<TTdataException.ekscnr.size();i++)//이미 추가되어있는 날짜는 삭제
 					{

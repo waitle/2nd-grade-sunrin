@@ -18,6 +18,9 @@ public class Subjects extends JPanel {
 		this.setVisible(true);
 		setLayout(null);
 
+		Loadfile lf = new Loadfile();
+		add(lf);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 800, 550);
 		add(scrollPane);

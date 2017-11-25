@@ -112,7 +112,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 					if (filetype.equals("jpg") || filetype.equals("jpeg") || filetype.equals("JPG")
 							|| filetype.equals("JPEG"))// 파일
 					{
-						status = 1;
+						status = 0;
 						System.out.println("image confirmed");
 						System.out.println("file name :" + filename);
 
@@ -130,16 +130,19 @@ public class Loadfile extends JPanel implements DropTargetListener {
 										+ Integer.parseInt(temp[0]);// yyyymmdd
 								time = Integer.parseInt(temp[1]) * 10000 + Integer.parseInt(compare[3]) * 100
 										+ Integer.parseInt(compare[4]);// hhmmss
+								System.out.println(TTdataException.ekscnr.size());
+								//System.out.println(TTdataException.ekscnr);
 
 								for (int c = 0; c < TTdataException.ekscnr.size(); c++) {
-									if (Integer.parseInt(TTdataException.ekscnr.get(c).ExceptedDATE) == date)// 예외처리된
+									System.out.println(c+"번째 예외처린된 날짜와 비교");
+									if (Integer.parseInt(TTdataException.ekscnr.get(c).ExceptedDATE)==date)// 예외처리된 날짜일때
 									{
 										System.out.println("예외처리됨");
 										for (int s = 0; s < 7; s++) {
 											if (TTdataException.ekscnr.get(c).getstarttime(s + 1) < time
 													&& time < TTdataException.ekscnr.get(c).getendtime(s + 1))// 몇교시
 											{
-												System.out.println(s + "교시");
+												System.out.println(String.valueOf(s+1) + "교시");
 												DateFormat a = new SimpleDateFormat("yyyyMMdd");
 												Date skf = a.parse(String.valueOf(date));
 												Calendar cal = Calendar.getInstance();
@@ -148,28 +151,36 @@ public class Loadfile extends JPanel implements DropTargetListener {
 												if (dayNum == 1 || dayNum == 7)
 													break;
 												copypic(TTdata.subjects[s][dayNum-2]);
+												status =1;
 												break;
 											}
 										}
-									}
-								}
-								System.out.println("스태틱사진임");
-								for (int s = 0; s < 7; s++) {
-									if (TTdata.getstarttime(s + 1) < time && time < TTdata.getendtime(s + 1))// 몇교시
-									{
-										System.out.println(String.valueOf(s+1) + "교시");
-										DateFormat a = new SimpleDateFormat("yyyyMMdd");
-										Date skf = a.parse(String.valueOf(date));
-										Calendar cal = Calendar.getInstance();
-										cal.setTime(skf);
-										int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
-										if (dayNum == 1 || dayNum == 7)
-											break;
-										System.out.println(TTdata.subjects[s][dayNum - 2]);
-										copypic(TTdata.subjects[s][dayNum - 2]);
 										break;
 									}
+									
 								}
+								if(status==0)
+								{
+									System.out.println("스태틱사진임");
+									for (int s = 0; s < 7; s++) {
+										if (TTdata.getstarttime(s + 1) < time && time < TTdata.getendtime(s + 1))// 몇교시
+										{
+											System.out.println(String.valueOf(s+1) + "교시");
+											DateFormat a = new SimpleDateFormat("yyyyMMdd");
+											Date skf = a.parse(String.valueOf(date));
+											Calendar cal = Calendar.getInstance();
+											cal.setTime(skf);
+											int dayNum = cal.get(Calendar.DAY_OF_WEEK);// 무슨요일
+											if (dayNum == 1 || dayNum == 7)
+												break;
+											System.out.println(TTdata.subjects[s][dayNum - 2]);
+											copypic(TTdata.subjects[s][dayNum - 2]);
+											break;
+										}
+									}
+									break;
+								}
+								
 							}
 						} catch (Exception e) {
 							//System.out.println(e.toString());
