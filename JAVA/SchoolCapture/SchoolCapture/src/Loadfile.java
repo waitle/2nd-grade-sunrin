@@ -92,12 +92,12 @@ public class Loadfile extends JPanel implements DropTargetListener {
 				// 파일명 얻어오기
 				@SuppressWarnings("rawtypes")
 				java.util.List list = (java.util.List) tr.getTransferData(DataFlavor.javaFileListFlavor);
-
+				System.out.println("droped file count: "+list.size());
 				// 파일명 출력
 				for (int i = 0; i < list.size(); i++)// 드롭된 아이템 갯수만큼 반복
 				{
 					filelocaion = list.get(i).toString();// 경로불러오기
-					System.out.println("file location:" + filelocaion);
+					System.out.println("file location: " + filelocaion);
 					file = new File(filelocaion);
 					st = new StringTokenizer(filelocaion, ".");// 확장자만 분리
 					while (st.hasMoreTokens())// 마지막 토큰을 반환(확장자)
@@ -114,7 +114,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 					{
 						status = 0;
 						System.out.println("image confirmed");
-						System.out.println("file name :" + filename);
+						System.out.println("file name: " + filename);
 
 						// 파일 메타데이터 불러오기
 						IImageMetadata metadata = Imaging.getMetadata(file);
@@ -130,7 +130,7 @@ public class Loadfile extends JPanel implements DropTargetListener {
 										+ Integer.parseInt(temp[0]);// yyyymmdd
 								time = Integer.parseInt(temp[1]) * 10000 + Integer.parseInt(compare[3]) * 100
 										+ Integer.parseInt(compare[4]);// hhmmss
-								System.out.println(TTdataException.ekscnr.size());
+								System.out.println("excepted date count: "+TTdataException.ekscnr.size());
 								//System.out.println(TTdataException.ekscnr);
 
 								for (int c = 0; c < TTdataException.ekscnr.size(); c++) {
@@ -178,7 +178,6 @@ public class Loadfile extends JPanel implements DropTargetListener {
 											break;
 										}
 									}
-									break;
 								}
 								
 							}

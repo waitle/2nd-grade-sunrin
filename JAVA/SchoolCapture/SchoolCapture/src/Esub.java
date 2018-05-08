@@ -36,21 +36,25 @@ public class Esub extends JPanel {
 		setLayout(null);
 
 		name = new JTextField();
+		name.setEditable(false);
 		name.setColumns(10);
 		name.setBounds(332, 352, 116, 21);
 		this.add(name);
 
 		teacher = new JTextField();
+		teacher.setEditable(false);
 		teacher.setColumns(10);
 		teacher.setBounds(332, 383, 116, 21);
 		this.add(teacher);
 
 		email = new JTextField();
+		email.setEditable(false);
 		email.setColumns(10);
 		email.setBounds(332, 414, 116, 21);
 		this.add(email);
 
 		phone = new JTextField();
+		phone.setEditable(false);
 		phone.setColumns(10);
 		phone.setBounds(332, 445, 116, 21);
 		this.add(phone);
@@ -77,6 +81,7 @@ public class Esub extends JPanel {
 
 		// 삭제버튼
 		JButton delete = new JButton("\uC0AD\uC81C");
+		delete.setEnabled(false);
 		delete.setForeground(Color.DARK_GRAY);
 		delete.setBackground(Color.LIGHT_GRAY);
 		delete.setBounds(505, 505, 97, 23);
@@ -84,6 +89,7 @@ public class Esub extends JPanel {
 
 		// 확인버튼
 		JButton confirm = new JButton("\uD655\uC778");
+		confirm.setEnabled(false);
 		confirm.setForeground(Color.DARK_GRAY);
 		confirm.setBackground(Color.LIGHT_GRAY);
 		confirm.setBounds(614, 505, 97, 23);

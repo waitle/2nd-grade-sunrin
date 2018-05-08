@@ -33,7 +33,7 @@ public class TTdata{
 	public static int getendtime(int n)
 	{
 		//set form hhmmss
-		int h=8;
+		int h=8;	
 		int m=40;
 		int result=0;
 		m += runtime*n+breaktime*n;

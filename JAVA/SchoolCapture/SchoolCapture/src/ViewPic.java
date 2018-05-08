@@ -61,7 +61,7 @@ public class ViewPic extends JPanel {
 			createpage(index%16, index/16);
 		}
 
-		JButton previous = new JButton("\uACFC\uBAA9\uBCF4\uAE30");
+		JButton previous = new JButton("\uACFC\uBAA9\uBCF4\uAE30");//°ú¸ñº¸±â
 		
 		previous.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
 		previous.setFocusPainted(false);
@@ -70,7 +70,7 @@ public class ViewPic extends JPanel {
 		previous.setBackground(new Color(220, 220, 220));
 		add(previous);
 		
-		JButton delete = new JButton("\uC0C8\uB85C\uACE0\uCE68");
+		JButton delete = new JButton("\uC0C8\uB85C\uACE0\uCE68");//»õ·Î°íÄ§
 		
 		delete.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
 		delete.setFocusPainted(false);
@@ -79,7 +79,7 @@ public class ViewPic extends JPanel {
 		delete.setBackground(new Color(220, 220, 220));
 		add(delete);
 		
-		JButton before = new JButton("\uC774\uC804");
+		JButton before = new JButton("\uC774\uC804");//ÀÌÀü
 		before.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
 		before.setFocusPainted(false);
 		before.setBorderPainted(false);
@@ -89,7 +89,7 @@ public class ViewPic extends JPanel {
 		add(before);
 		
 
-		JButton next = new JButton("\uB2E4\uC74C");
+		JButton next = new JButton("\uB2E4\uC74C");//´ÙÀ½
 		next.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
 		next.setFocusPainted(false);
 		next.setBorderPainted(false);
